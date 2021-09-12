@@ -7,9 +7,6 @@ import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
-import java.lang.Thread;
-import java.lang.InterruptedException;
-import java.lang.NumberFormatException;
 import java.net.*;
 
 public class Anime extends Kitsu {
@@ -34,15 +31,25 @@ public class Anime extends Kitsu {
     * The defuault constructor. Gets a random Anime's data
     */
     public Anime () {
-        this (rand.nextInt(3000));
+        this (rand.nextInt(3000), false);
+    }
+
+    /**
+    * Gets a random anime's data and dictates whether to skip the anime upon failure
+    *
+    * @param skip Dictates whether to skip the anime upon failure or get a new id
+    */
+    public Anime (boolean skip) {
+        this (rand.nextInt(3000), skip);
     }
 
     /**
     * Gets an anime's data.
     *
     * @param rand_id The Anime's id.
+    * @param skip    Dictates whether to skip the anime upon failure or get a new id
     */
-    public Anime (int rand_id) {
+    public Anime (int rand_id, boolean skip) {
         int rand_num = rand_id;
         while (true) {
             try {
@@ -65,9 +72,11 @@ public class Anime extends Kitsu {
                 medium_img_link = map.get ("medium");
                 large_img_link = map.get ("large");
                 break;
-            } catch (NumberFormatException e) {
-                System.out.println ("Record not found, trying again");
-                rand_num = rand.nextInt(3000);
+            } catch (Exception e) {
+                System.out.println ("Error, trying again");
+                if (!skip) {
+                    rand_num = rand.nextInt(3000);
+                }
             }
         }
     }
