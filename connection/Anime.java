@@ -7,6 +7,9 @@ import java.io.InputStream;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.FileOutputStream;
+import java.lang.Thread;
+import java.lang.InterruptedException;
+import java.lang.NumberFormatException;
 import java.net.*;
 
 public class Anime extends Kitsu {
@@ -31,7 +34,7 @@ public class Anime extends Kitsu {
     * The defuault constructor. Gets a random Anime's data
     */
     public Anime () {
-        this (rand.nextInt(1000));
+        this (rand.nextInt(3000));
     }
 
     /**
@@ -40,24 +43,33 @@ public class Anime extends Kitsu {
     * @param rand_id The Anime's id.
     */
     public Anime (int rand_id) {
-        map = get_anime_data (rand_id);
-        kitsuId = Integer.parseInt (map.get ("id"));
+        int rand_num = rand_id;
+        while (true) {
+            try {
+                map = get_anime_data (rand_num);
+                kitsuId = Integer.parseInt (map.get ("id"));
 
-        name = map.get ("en_jp");
-        en_name = map.get ("en");
-        jp_name = map.get ("ja_jp");
+                name = map.get ("en_jp");
+                en_name = map.get ("en");
+                jp_name = map.get ("ja_jp");
 
-        ratingRank = Integer.parseInt (map.get ("ratingRank"));
-        popularityRank = Integer.parseInt (map.get ("popularityRank"));
-        averageRating = Double.parseDouble (map.get ("averageRating"));
+                ratingRank = Integer.parseInt (map.get ("ratingRank"));
+                popularityRank = Integer.parseInt (map.get ("popularityRank"));
+                averageRating = Double.parseDouble (map.get ("averageRating"));
 
-        episode_no = Integer.parseInt (map.get ("episodeCount"));
-        start_date = map.get ("startDate");
-        end_date = map.get ("endDate");
+                episode_no = Integer.parseInt (map.get ("episodeCount"));
+                start_date = map.get ("startDate");
+                end_date = map.get ("endDate");
 
-        small_img_link = map.get ("tiny");
-        medium_img_link = map.get ("medium");
-        large_img_link = map.get ("large");
+                small_img_link = map.get ("tiny");
+                medium_img_link = map.get ("medium");
+                large_img_link = map.get ("large");
+                break;
+            } catch (NumberFormatException e) {
+                System.out.println ("Record not found, trying again");
+                rand_num = rand.nextInt(3000);
+            }
+        }
     }
 
     public int get_kitsu_id() {
@@ -187,6 +199,13 @@ public class Anime extends Kitsu {
             return false;
         }
 
+/*        try {
+            Thread.sleep(500);
+        } catch (InterruptedException ex) {
+            System.out.println (ex);
+            return false;
+        }
+*/
         return true;
     }
 

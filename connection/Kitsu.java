@@ -1,9 +1,12 @@
 package connection;
 
 import java.io.UnsupportedEncodingException;
+import java.util.concurrent.TimeUnit;
 import java.io.Reader;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.lang.Thread;
+import java.lang.InterruptedException;
 import java.io.IOException;
 import java.util.HashMap;
 import java.net.*;
@@ -53,7 +56,12 @@ public class Kitsu {
         }
 
         HashMap<String, String> retMap = JSON.parse (content.toString());
-
+/*        try {
+            Thread.sleep (500);
+        } catch (InterruptedException ex) {
+            System.out.println (ex);
+        }
+*/
         return retMap;
 
     }
