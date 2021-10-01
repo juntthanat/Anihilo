@@ -1,0 +1,19 @@
+
+
+class Anime:
+
+
+
+class AnimeGetter:
+
+    private animeList = []
+    private int MIN_ANIMELIST = 10;
+    private int MAX_ANIMELIST = 50;
+
+    public AnimeGetter():
+        animeList.fillAnimeList()
+
+    public sortBy(String type):
+        animeList.sort(key=type)
+
+    public getAnime

@@ -1,0 +1,101 @@
+
+
+
+The is the output I kinda want for classic mode:
+
+Game is about to begin
+
+
+Stats:
+    Accuracy: 0%
+    Total guess: 0
+    Correct guess: 0
+    Difficulty: Easy (Difference in score from a position in a list is 40%)
+    Lives: 3
+    Guess till next life: 10
+
+
+Question: Which anime has higher score on MAL?
+Anime 1: Jujitsu Kaisen (With picture)
+Anime 2: Chobits (With picture)
+
+Please enter answer: 1
+
+Correct! (Play a cutesy reward sound effect) ?? Should we really show the actual answer cause it ruins the point cause if the anime came up again then the player can cheese
+Jujitsu Kaisen score: 8.75
+Chobits: 7.42
+
+Please enter something to continue: Ok I think I am pretty good
+
+Stats:
+    Accuracy: 100%
+    Total guess: 1
+    Correct guess: 1
+    Difficulty: Easy
+    Lives: 3
+    Guess till next life: 9
+
+Question: Which anime has a higher member count?
+Anime 1: Odd taxi
+Anime 2: Naruto
+
+Please enter answer: 1
+
+Wrong!
+
+Stats:
+    Accuracy: 50%
+    Total guess: 2
+    Correct guess: 1
+    Difficulty: Easy
+    Lives: 2
+    Guess till next life: 8
+
+Question: Which anime has a higher rank on MAL
+Anime 1: Full-metal alchemist brotherhood
+Anime 2: Toradora
+
+Please enter answer: 1
+
+Correct!
+
+(A bunch of question later)
+
+Stats:
+    Accuracy: 89%
+    Total guess: 9
+    Correct guess: 8
+    Difficulty: Easy
+    Lives: 2
+    Guess till next life: 1
+
+Question: Which anime has higher fan-base?
+Anime 1: Death note
+Anime 2: Angel beat
+
+Please enter answer:  1
+
+Correct!
+
+Stats:
+    Accuracy: 90%
+    Total guess: 10
+    Correct guess: 9
+    Difficulty: Medium
+    Lives: 3
+    Guess till next life: 15
+
+Please enter answer:  3 (I want to exit)
+
+Are you sure? (Y/n)
+Y
+
+Set life to zero
+(EXIT game loop)
+
+
+
+
+
+
+

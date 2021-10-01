@@ -1,0 +1,91 @@
+
+(This is how I see the main menu)
+
+Welcome to Anihilo an anime screening program for removing
+filthy casuals
+
+1. Play game
+2. Score records
+3. How to play?
+4. Credits
+5. Exit
+
+Please enter option: 1
+
+Select game mode
+1. Classic
+2. Sudden death
+3. RNG
+4. Practice
+5. Go back
+
+(In case player select 1):
+(Go into game loop for classic mode)
+(END of classic mode)
+
+Please enter option: 5
+
+Welcome to Anihilo an anime screening program for removing
+filthy casuals
+
+1. Play game
+2. Score records
+3. How to play?
+4. Credits
+5. Exit
+
+Please enter option: 2
+
+Score       Mode           Guess               Timestamp
+13630     Classic          40           2021 Sep 10  11:51
+9234      Classic          35           2021 Sep 5   13:56
+9042      Sudden death     15           2020 Jan 11  20:00
+
+Please enter option: 1 (For exiting in this page)
+
+Welcome to Anihilo an anime screening program for removing
+filthy casuals
+
+1. Play game
+2. Score records
+3. How to play?
+4. Credits
+5. Exit
+
+Please enter option: 3
+
+(Shows a picture/text explaining the game)
+
+Please enter option: 1 (for exiting)
+
+Welcome to Anihilo an anime screening program for removing
+filthy casuals
+
+1. Play game
+2. Score records
+3. How to play?
+4. Credits
+5. Exit
+
+Please enter option: 4
+
+(Shows text of our name + ID)
+
+Please enter option: 1 (for exit from this page)
+
+
+Welcome to Anihilo an anime screening program for removing
+filthy casuals
+
+1. Play game
+2. Score records
+3. How to play?
+4. Credits
+5. Exit
+
+Please enter option: 5
+
+(EXIT PROGRAM)
+
+
+
