@@ -11,19 +11,21 @@ public class QuestionMaker {
     ArrayList<Anime> animeList = new ArrayList<Anime>();
     ArrayList<Integer> randomNumberList = new ArrayList<Integer>();
 
-    final int MAX_RANDOM_NUMBER_SIZE = 1000;
-    final int MIN_RANDOM_NUMBER_SIZE = 100;
-    final int MAX_ANIME_SIZE = 50;
-    final int MIN_ANIME_SIZE = 10;
+    public static final int MAX_RANDOM_NUMBER_SIZE = 1000;
+    public static final int MIN_RANDOM_NUMBER_SIZE = 100;
+    public static final int MAX_ANIME_SIZE = 50;
+    public static final int MIN_ANIME_SIZE = 10;
 
-    final String[] difficultyLevels = {"easy", "medium", "hard", "death"};
-    final double EASY_POSITIONAL_DIFFERENCE = 0.4;
-    final double MEDIUM_POSITIONAL_DIFFERENCE = 0.2;
-    final double HARD_POSITIONAL_DIFFERENCE = 0.1;
-    final double DEATH_POSITIONAL_DIFFERENCE = 0.01;
+    public static final String[] difficultyLevels = {"easy", "medium", "hard", "death"};
+    public static final double EASY_POSITIONAL_DIFFERENCE = 0.4;
+    public static final double MEDIUM_POSITIONAL_DIFFERENCE = 0.2;
+    public static final double HARD_POSITIONAL_DIFFERENCE = 0.1;
+    public static final double DEATH_POSITIONAL_DIFFERENCE = 0.01;
 
-    final String animeImgFolderPath = "animeImage\\"; // This is from source root which the "Anihilo" so this represent Anihilo\animeImg\
-    final String animeImgFileExtension = ".jpg";
+    public final static String[] questionTypes = {"ratingRank"};
+
+    public static final String animeImgFolderPath = "animeImage\\"; // This is from source root which the "Anihilo" so this represent Anihilo\animeImg\
+    public static final String animeImgFileExtension = ".jpg";
 
     public QuestionMaker(){
         this.generateRandomNumberList();
@@ -41,16 +43,16 @@ public class QuestionMaker {
 //  Generate Question() with determined difficulty and random type
     public Question makeQuestion(String difficulty){
         Random random = new Random();
-        int randomTypeIndex = random.nextInt(QuestionComponentFactory.questionTypes.length);
-        String randomType = QuestionComponentFactory.questionTypes[randomTypeIndex];
+        int randomTypeIndex = random.nextInt(questionTypes.length);
+        String randomType = questionTypes[randomTypeIndex];
         return makeQuestion(difficulty, randomType);
     }
 
 
 //  Generate Question() with determined difficulty and type
     public Question makeQuestion(String difficulty, String inType) {
-        String generatedPrompt = QuestionComponentFactory.getPrompt(inType);
-        Comparator<Anime> generatedComparator = QuestionComponentFactory.getComparator(inType);
+        String generatedPrompt = QuestionMaker.getPrompt(inType);
+        Comparator<Anime> generatedComparator = QuestionMaker.getComparator(inType);
         double positionalDifference;
 
 
@@ -79,8 +81,6 @@ public class QuestionMaker {
     // For example if we have a list of 100 anime listed by rank
     // We pick a random number then by random chance move forward/backward by positionalDifference% of the list
     // The two anime will then be selected for making question object
-
-
     public Question internalMakeQuestion(double positionalDifference, Comparator<Anime> comparator, String prompt, String difficulty){
 
         // Generate anime list and sort them
@@ -169,10 +169,37 @@ public class QuestionMaker {
 
 
     public void fillAnimeList(){
-        int amountOfAnimeToAdd = this.MAX_ANIME_SIZE - this.animeList.size();
+        int amountOfAnimeToAdd = MAX_ANIME_SIZE - this.animeList.size();
+
         for(int i = 0; i < amountOfAnimeToAdd; i++){
             int randNumFromList = getRandomNumberFromList();
             this.animeList.add(new Anime(randNumFromList, false));
         }
     }
+
+    public static Comparator<Anime> getComparator(String inType){
+        Comparator<Anime> ratingRankComp = (a1,a2) -> a2.get_rating_rank()-a1.get_rating_rank(); // Positive when a1 has better rank than a2
+
+        if(inType.equalsIgnoreCase(questionTypes[0])){
+            return ratingRankComp;
+        } else {
+            System.out.println("Error: QuestionMaker getComparator()");
+            System.out.println("Returning ratingRankComp comparator as default");
+            return ratingRankComp;
+        }
+    }
+
+    public static String getPrompt(String inType){
+
+        if(inType.equalsIgnoreCase(questionTypes[0])){
+            return "Select the anime with better rank";
+        } else {
+            return "Default prompt";
+        }
+
+    }
+
+
+
+
 }
