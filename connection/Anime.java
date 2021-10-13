@@ -32,7 +32,6 @@ public class Anime extends Kitsu {
     */
     public Anime () {
         this (rand.nextInt(3000), false);
-        errorCount = 0;
     }
 
     /**
@@ -42,7 +41,6 @@ public class Anime extends Kitsu {
     */
     public Anime (boolean skip) {
         this (rand.nextInt(3000), skip);
-        errorCount = 0;
     }
 
     /**
