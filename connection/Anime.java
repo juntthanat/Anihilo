@@ -25,6 +25,7 @@ public class Anime extends Kitsu {
     int popularityRank;
     int episode_no;
     int kitsuId;
+    int errorCount;
     double averageRating;
 
     /**
@@ -32,6 +33,7 @@ public class Anime extends Kitsu {
     */
     public Anime () {
         this (rand.nextInt(3000), false);
+        errorCount = 0;
     }
 
     /**
@@ -41,6 +43,7 @@ public class Anime extends Kitsu {
     */
     public Anime (boolean skip) {
         this (rand.nextInt(3000), skip);
+        errorCount = 0;
     }
 
     /**
@@ -73,9 +76,14 @@ public class Anime extends Kitsu {
                 large_img_link = map.get ("large");
                 break;
             } catch (Exception e) {
+                errorCount += 1;
                 System.out.println ("Error, trying again");
                 if (!skip) {
                     rand_num = rand.nextInt(3000);
+                }
+
+                if (errorCount >= 10) {
+                    throw new ConnectionError("Connection Error");
                 }
             }
         }
