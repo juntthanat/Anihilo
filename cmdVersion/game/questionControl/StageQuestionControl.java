@@ -1,7 +1,8 @@
 package cmdVersion.game.questionControl;
 
 import cmdVersion.game.stats.GameStats;
-import cmdVersion.questionFactory.QuestionMaker;
+import cmdVersion.game.questionFactory.QuestionMaker;
+import java.util.Random;
 
 public class StageQuestionControl extends QuestionControl {
 
@@ -24,9 +25,12 @@ public class StageQuestionControl extends QuestionControl {
         return output;
     }
 
+
     @Override
     public String getQuestionType() {
-        return QuestionMaker.questionTypes[0];
+        Random random = new Random();
+        int randomIndex = random.nextInt(QuestionMaker.questionTypes.length);
+        return QuestionMaker.questionTypes[randomIndex];
     }
 
     @Override

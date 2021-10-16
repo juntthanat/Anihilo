@@ -1,4 +1,4 @@
-package main_game;
+package Frontend.main_game;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
@@ -8,7 +8,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import utility.LineBreaker;
+import Frontend.utility.LineBreaker;
 
 public class Game_Part {
     public Game_Part(JPanel main_game_page, JPanel main_page, CardLayout page) {

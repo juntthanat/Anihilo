@@ -1,4 +1,4 @@
-package main_menu;
+package Frontend.main_menu;
 
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;

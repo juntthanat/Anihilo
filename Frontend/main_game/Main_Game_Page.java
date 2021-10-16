@@ -1,4 +1,4 @@
-package main_game;
+package Frontend.main_game;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;

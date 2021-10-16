@@ -1,4 +1,4 @@
-package utility;
+package Frontend.utility;
 
 public class Utils {
     // * HTML code (open close of html and body)

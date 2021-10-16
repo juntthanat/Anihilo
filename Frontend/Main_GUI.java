@@ -1,5 +1,7 @@
-import main_game.Main_Game_Page;
-import main_menu.Main_Menu_Page;
+package Frontend;
+
+import Frontend.main_game.Main_Game_Page;
+import Frontend.main_menu.Main_Menu_Page;
 
 import java.awt.CardLayout;
 import javax.swing.JFrame;

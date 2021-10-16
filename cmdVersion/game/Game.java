@@ -4,24 +4,28 @@ import cmdVersion.game.lifeControl.LifeControl;
 import cmdVersion.game.questionControl.QuestionControl;
 import cmdVersion.game.scoreControl.ScoreControl;
 import cmdVersion.game.stats.GameStats;
-import cmdVersion.questionFactory.Question;
-import cmdVersion.questionFactory.QuestionMaker;
+import cmdVersion.game.questionFactory.QuestionMaker;
+import connection.ConnectionError;
 
 import javax.swing.*;
 import java.awt.*;
 import java.util.Scanner;
 
 public class Game {
-    QuestionMaker questionMaker = new QuestionMaker();
-    GameStats gameStats = new GameStats();
+    QuestionMaker questionMaker;
+    GameStats gameStats;
     QuestionControl questionControl;
     LifeControl lifeControl;
     ScoreControl scoreControl;
 
-    public Game(QuestionControl questionControl, LifeControl lifeControl, ScoreControl scoreControl) {
+    public Game(QuestionControl questionControl, LifeControl lifeControl, ScoreControl scoreControl) throws ConnectionError {
         this.questionControl = questionControl;
         this.lifeControl = lifeControl;
         this.scoreControl = scoreControl;
+
+        // Default creation
+        this.questionMaker = new QuestionMaker();
+        this.gameStats = new GameStats();
     }
 
     public void update(){
@@ -63,7 +67,22 @@ public class Game {
         while(lifeControl.isAlive()){
             String questionDifficulty = questionControl.getQuestionDifficulty();
             String questionType = questionControl.getQuestionType();
-            gameStats.setQuestion(this.questionMaker.makeQuestion(questionDifficulty, questionType));
+
+            // Making sure there is no connection problem
+            boolean questionIsGenerated = false;
+            while(! questionIsGenerated){
+                try {
+                    gameStats.setQuestion(this.questionMaker.makeQuestion(questionDifficulty, questionType));
+                    questionIsGenerated = true;
+                } catch (ConnectionError e){
+                    System.out.println("Error: Connection problem at game.run()");
+                    System.out.println("Please reconnect your internet and press 1 to cotinue: ");
+                    String stopper = input.nextLine();
+                }
+
+            }
+
+
 
             // Updating view
             ImageIcon imageLeft = new ImageIcon(gameStats.getQuestion().getLeftAnimeImgPath());
@@ -74,12 +93,12 @@ public class Game {
 
             frame.repaint();
 
-
+            System.out.println(gameStats.getQuestion().getPrompt());
             System.out.println("Anime 1: " + gameStats.getQuestion().getLeftAnime().get_name());
             System.out.println("Anime 2: " + gameStats.getQuestion().getRightAnime().get_name());
 
             System.out.print("\n Type -1 for Anime 1, and 1 for Anime 2: ");
-            userAnswer = input.nextInt();
+            userAnswer = Integer.parseInt(input.nextLine());
 
             if(gameStats.getQuestion().checkAnswer(userAnswer)){
                 System.out.println("Correct!");
@@ -90,11 +109,11 @@ public class Game {
             }
 
             this.update();
-            System.out.println("Anime 1 has rating rank of " + gameStats.getQuestion().getLeftAnime().get_rating_rank());
-            System.out.println("Anime 2 has rating rank of " + gameStats.getQuestion().getRightAnime().get_rating_rank());
+            System.out.println("Anime 1 " + gameStats.getQuestion().getLeftAnimeQuestionRelevantData());
+            System.out.println("Anime 2 " + gameStats.getQuestion().getRightAnimeQuestionRelevantData());
             System.out.println("\nPress enter 1 to continue:\n");
 
-            Integer pressToContinue  = input.nextInt();
+            Integer pressToContinue  = Integer.parseInt(input.nextLine());
 
             System.out.println(this.toString());
 

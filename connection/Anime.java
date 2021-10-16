@@ -10,6 +10,7 @@ import java.io.FileOutputStream;
 import java.net.*;
 
 public class Anime extends Kitsu {
+    static final Integer MAX_ATTEMPT_BEFORE_CONNECTION_ERROR = 10;
     static Random rand = new Random();
     String name;
     String en_name;
@@ -81,7 +82,7 @@ public class Anime extends Kitsu {
             } catch (Exception e) {
                 errorCount += 1;
 
-                if (errorCount >= 1) {
+                if (errorCount >= MAX_ATTEMPT_BEFORE_CONNECTION_ERROR) {
                     throw new ConnectionError("Connection Error");
                 }
 

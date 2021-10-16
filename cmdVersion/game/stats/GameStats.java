@@ -1,6 +1,6 @@
 package cmdVersion.game.stats;
 
-import cmdVersion.questionFactory.Question;
+import cmdVersion.game.questionFactory.Question;
 
 public class GameStats {
 

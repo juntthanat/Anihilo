@@ -1,11 +1,11 @@
-package main_game;
+package Frontend.main_game;
 
 import java.awt.CardLayout;
 import java.awt.Color;
 import javax.swing.border.MatteBorder;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import utility.Utils;
+import Frontend.utility.Utils;
 
 public class Score_Part {
         public Score_Part(JPanel main_game_page, JPanel main_page, CardLayout page) {
