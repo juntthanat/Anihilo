@@ -221,16 +221,14 @@ public class Anime extends Kitsu {
             return false;
         }
 
-/*        try {
-            Thread.sleep(500);
-        } catch (InterruptedException ex) {
-            System.out.println (ex);
-            return false;
-        }
-*/
         return true;
     }
 
+    /**
+    * Returns the information of the Anime in String format
+    *
+    * @return   A String containing the information of the Anime.
+    */
     public String toString() {
         if (retStr != null) {
             return retStr;

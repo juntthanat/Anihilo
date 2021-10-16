@@ -31,12 +31,22 @@ public class QuestionMaker {
     public static final String animeImgFolderPath = "animeImage\\"; // This is from source root which the "Anihilo" so this represent Anihilo\animeImg\
     public static final String animeImgFileExtension = ".jpg";
 
+    /**
+    * The Class Constructor
+    *
+    * @throws ConnectionError
+    */
     public QuestionMaker() throws ConnectionError {
         this.generateRandomNumberList();
         this.fillAnimeList();
     }
 
-    // Generate Question with random difficulty and type
+    /**
+    * Generates a Question with random difficulty and type
+    *
+    * @return Question The generated Question
+    * @throws ConnectionError
+    */
     public Question makeQuestion() throws ConnectionError {
         Random random = new Random();
         int randomDifficultyIndex = random.nextInt(difficultyLevels.length);
@@ -44,7 +54,14 @@ public class QuestionMaker {
         return makeQuestion(randomDifficulty);
 
     }
-//  Generate Question() with determined difficulty and random type
+
+    /**
+    * Generates a Question with determined difficulty and random type
+    *
+    * @param difficulty The difficulty of the Question
+    * @return Question The generated Question
+    * @throws ConnectionError
+    */
     public Question makeQuestion(String difficulty) throws ConnectionError {
         Random random = new Random();
         int randomTypeIndex = random.nextInt(questionTypes.length);
@@ -52,8 +69,14 @@ public class QuestionMaker {
         return makeQuestion(difficulty, randomType);
     }
 
-
-//  Generate Question() with determined difficulty and type
+    /**
+    * Generates a Question with determined difficulty and type
+    *
+    * @param difficulty The difficulty of the Question
+    * @param type       The type of the question
+    * @return Question The generated Question
+    * @throws ConnectionError
+    */
     public Question makeQuestion(String difficulty, String inType) throws ConnectionError {
         String generatedPrompt = QuestionMaker.getPrompt(inType);
         Comparator<Anime> generatedComparator = QuestionMaker.getComparator(inType);
@@ -139,7 +162,13 @@ public class QuestionMaker {
     // END of internalMakeQuestion()
 
 
-    // Download image of anime if image doesn't exist and return absolute path of the anime img file
+    /**
+    * Downloads the image of the anime if it does not exist and
+    * returns the absolute path to the image.
+    *
+    * @param inAnime The Anime to download the image for
+    * @return String The absolute path of the image
+    */
     public String generateAnimeImagePath(Anime inAnime){
 
         String animeImgPath = animeImgFolderPath + inAnime.get_kitsu_id() + animeImgFileExtension;
@@ -152,7 +181,9 @@ public class QuestionMaker {
         return animeImgPath;
     }
 
-    // Instantiate MAX_RANDOM_NUMBER_SIZE numbers for randomNumberList
+    /**
+    * Generates a random number list
+    */
     public void generateRandomNumberList(){
         for(int i = 1; i < MAX_RANDOM_NUMBER_SIZE; i++){
             this.randomNumberList.add(i);
@@ -160,18 +191,29 @@ public class QuestionMaker {
         Collections.shuffle(this.randomNumberList);
     }
 
-    // Get a random number from the list so when choosing an anime it don't repeat till the player practically did 900 which is near impossible to reach
-    // "Pop" from beginning of list
+    /**
+    * Gets a random number from the random number list
+    *
+    * @return int A random number from the list
+    */
     public int getRandomNumberFromList(){
         return this.randomNumberList.remove(0);
     }
 
-    // Sort the animeList
+    /**
+    * Sorts the Anime list.
+    *
+    * @param inComparator The comparator to use
+    */
     public void sortBy(Comparator<Anime> inComparator){
         animeList.sort(inComparator);
     }
 
-
+    /**
+    * Fills up the Anime list
+    *
+    * @throws ConnectionError
+    */
     public void fillAnimeList() throws ConnectionError {
         int amountOfAnimeToAdd = MAX_ANIME_SIZE - this.animeList.size();
 
@@ -181,6 +223,12 @@ public class QuestionMaker {
         }
     }
 
+    /**
+    * Returns an Anime Comparator
+    *
+    * @param inType The question type
+    * @return Comparator<Anime>
+    */
     public static Comparator<Anime> getComparator(String inType){
         //Comparator<Anime> ratingRankComp = (a1,a2) -> a2.get_rating_rank()-a1.get_rating_rank(); // Positive when a1 has better rank than a2
         //Comparator<Anime> popularityRankComp = (a1,a2) -> a2.get_rating_rank()-a1.get_rating_rank(); // Positive when a1 has better popularity rank than a2
@@ -199,6 +247,12 @@ public class QuestionMaker {
         }
     }
 
+    /**
+    * Gets the prompt for the user
+    *
+    * @param inType The type of question
+    * @return String The prompt
+    */
     public static String getPrompt(String inType){
 
         if(inType.equalsIgnoreCase(questionTypes[0])){
@@ -207,13 +261,9 @@ public class QuestionMaker {
             return "Select the anime with better rank in term of popularity";
         } else if (inType.equalsIgnoreCase(questionTypes[2])){
             return "Select the anime which came out first";
-        }else {
+        } else {
             return "Default prompt";
         }
 
     }
-
-
-
-
 }

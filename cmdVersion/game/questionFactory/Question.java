@@ -14,18 +14,17 @@ public class Question {
     int answer = 0; // -1 is left, 0 is both correct, 1 is right
 
     /**
-     * @param leftAnime
-     * @param rightAnime
-     * @param difficulty
-     * @param prompt
-     * @param answer
-     * @param leftAnimeImgPath
-     * @param rightAnimeImgPath
-     * @param type
-     */
-
-
-    // Constructors for making the question
+    * The Class Constructor
+    *
+    * @param leftAnime          One of the anime to be compared
+    * @param rightAnime         Another anime to be compared
+    * @param difficulty         The difficulty of the question
+    * @param prompt             The prompt
+    * @param answer             The answer to the question
+    * @param leftAnimeImgPath   The Image path of the first anime
+    * @param rightAnimeImgPath  The Image path of the second anime
+    * @param type               The type of the question
+    */
     public Question(Anime leftAnime, Anime rightAnime, String difficulty, String prompt, int answer, String leftAnimeImgPath, String rightAnimeImgPath, String type) {
         this.leftAnime = leftAnime;
         this.rightAnime = rightAnime;
@@ -101,6 +100,12 @@ public class Question {
         return getAnimeQuestionRelevantData(rightAnime);
     }
 
+    /**
+    * Gets the relevant data of the Anime
+    *
+    * @param anime The Anime object to get the data from
+    * @return String The output string
+    */
     public String getAnimeQuestionRelevantData(Anime anime){
         String output;
 
@@ -119,13 +124,22 @@ public class Question {
         return output;
     }
 
-    // user choose left anime = -1, user choose right anime = 1;
+    /**
+    * Checks the answer of the user
+    *
+    * @param userAnswer The answer of the user (-1 left, 1 right)
+    * @return boolean Whether the user answered correctly
+    */
     public boolean checkAnswer(int userAnswer){
         // this.answer == 0 means both side are correct "a freebie"
         return (userAnswer == this.answer) || (this.answer == 0);
     }
 
-
+    /**
+    * Returns the information string
+    *
+    * @return String The information string
+    */
     @Override
     public String toString() {
         return "Question{" +

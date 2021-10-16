@@ -8,6 +8,9 @@ public class StageScoreControl extends ScoreControl{
     Integer baseScorePerQuestion = 100;
     Integer streakBonus = 10;
 
+    /**
+    * Updates the current score of the player.
+    */
     @Override
     public void update(GameStats gameStats) {
         if(gameStats.isLatestQuestionAnsweredCorrect()){
@@ -16,11 +19,21 @@ public class StageScoreControl extends ScoreControl{
         }
     }
 
+    /**
+    * Returns the current score of the user
+    *
+    * @return totalScore The total score of the user
+    */
     @Override
     public Integer calculateScore() {
         return totalScore;
     }
 
+    /**
+    * Returns the score-related information as a string
+    *
+    * @return outputString The output string.
+    */
     @Override
     public String toString() {
         String output = "StageScoreControl\n";

@@ -8,6 +8,11 @@ public class StageQuestionControl extends QuestionControl {
 
     Integer correctGuess = 0;
 
+    /**
+    * Returns the difficulty of the question
+    *
+    * @return String The difficulty of the question
+    */
     @Override
     public String getQuestionDifficulty() {
         String output = "";
@@ -26,6 +31,11 @@ public class StageQuestionControl extends QuestionControl {
     }
 
 
+    /**
+    * Returns the type of the question
+    *
+    * @return String The type of the question
+    */
     @Override
     public String getQuestionType() {
         Random random = new Random();
@@ -33,6 +43,11 @@ public class StageQuestionControl extends QuestionControl {
         return QuestionMaker.questionTypes[randomIndex];
     }
 
+    /**
+    * Returns the information string
+    *
+    * @return String The information string
+    */
     @Override
     public String toString() {
         String output = "StageQuestionControl\n";
@@ -41,6 +56,9 @@ public class StageQuestionControl extends QuestionControl {
         return output;
     }
 
+    /**
+    * Updates the status of the question
+    */
     @Override
     public void update(GameStats gameStats) {
         this.correctGuess = gameStats.getGuessCorrect();

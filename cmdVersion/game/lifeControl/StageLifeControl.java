@@ -9,15 +9,26 @@ public class StageLifeControl extends LifeControl{
     Integer lifeGivenOut = 0;
     Integer correctGuessTillNextLife = 0;
 
+    /**
+    * Class constructor
+    */
     public StageLifeControl(){
         correctGuessTillNextLife = lifeGivenOut + baseGuessTillNextLife;
     }
 
+    /**
+    * Checks if the player is still alive
+    *
+    * @return boolean Whether the player is still alive
+    */
     @Override
     public boolean isAlive() {
         return remainingLives > 0;
     }
 
+    /**
+    * Updates the life count of the user
+    */
     @Override
     public void update(GameStats gameStats) {
         if(gameStats.isLatestQuestionAnsweredCorrect()){
@@ -32,6 +43,11 @@ public class StageLifeControl extends LifeControl{
         }
     }
 
+    /**
+    * Returns the information string
+    *
+    * @return String The output String
+    */
     @Override
     public String toString() {
         String output = "StageLifeControl: " + "\n";
