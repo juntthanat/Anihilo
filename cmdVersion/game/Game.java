@@ -28,20 +28,16 @@ public class Game {
         this.gameStats = new GameStats();
     }
 
-    /**
-    * Updates the player's score and life count.
-    */
+    public Game(Game another) throws ConnectionError{
+        this(another.questionControl, another.lifeControl, another.scoreControl);
+    }
+
     public void update(){
         this.questionControl.update(this.gameStats);
         this.lifeControl.update(this.gameStats);
         this.scoreControl.update(this.gameStats);
     }
 
-    /**
-    * The current stat of the user as a string
-    *
-    * @return outputString The output String.
-    */
     @Override
     public String toString() {
         return "Game\n" +
@@ -53,9 +49,6 @@ public class Game {
              ;
     }
 
-    /**
-    * Runs the game
-    */
     public void run(){
         Scanner input = new Scanner(System.in);
         Integer userAnswer = -5;
@@ -129,6 +122,7 @@ public class Game {
             System.out.println(this.toString());
 
         }
-        System.out.println("Game over");
+        System.out.println("End of game.run()");
+        frame.dispose();
     }
 }
