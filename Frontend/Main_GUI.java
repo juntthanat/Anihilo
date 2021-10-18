@@ -26,7 +26,7 @@ public class Main_GUI {
         deck.setLayout(page);
 
         // * create and add JPanel to deck
-        JPanel page1 = Main_Menu_Page.Main_Menu(deck, page);
+        JPanel page1 = Main_Menu_Page.Main_Menu(deck, page, main_page);
         deck.add(page1, "page1");
         JPanel page2 = Main_Game_Page.Main_Game(deck, page);
         deck.add(page2, "page2");
