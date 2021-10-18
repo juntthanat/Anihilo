@@ -12,7 +12,13 @@ import Frontend.utility.AnimeTitle_Changer;
 import Frontend.utility.Score_Changer;
 
 public class Game_Part {
-
+    /**
+    * Creates buttons and image panels
+    *
+    * @param main_game_page The main game page
+    * @param main_page      The main page
+    * @param page           A page to be switched to
+    */
     public Game_Part(JPanel main_game_page, JPanel main_page, CardLayout page) {
         // * Create a button
         // ! Create a getPicture() here for left and right then change the ImageIcon or

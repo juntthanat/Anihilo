@@ -11,6 +11,13 @@ import Frontend.utility.Page_Changer;
 import Frontend.utility.Instruction_Changer;
 
 public class Instruction {
+    /**
+    * Shows the instruction
+    *
+    * @param main_game_page The main game page
+    * @param main_page      The main page
+    * @param page           A page to be switched to
+    */
     public Instruction(JPanel main_game_page, JPanel main_page, CardLayout page) {
 
         //// * (button for back)

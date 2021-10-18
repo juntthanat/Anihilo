@@ -9,6 +9,13 @@ import Frontend.utility.Score_Changer;
 import Frontend.utility.Utils;
 
 public class Score_Part {
+        /**
+        * Constructs a section that shows the score of the player
+        *
+        * @param main_game_page The main game page
+        * @param main_page      The main page
+        * @param page           The page to be switched to
+        */
         public Score_Part(JPanel main_game_page, JPanel main_page, CardLayout page) {
                 // * Create Border
                 // * Panel for score

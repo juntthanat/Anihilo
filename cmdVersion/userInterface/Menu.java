@@ -10,6 +10,9 @@ import java.util.Scanner;
 public class Menu {
     public static final int EXIT = 0;
 
+    /**
+    * Displays the main menu
+    */
     public void showMainMenu() {
         Scanner input = new Scanner(System.in);
         Integer userInput = -1;
@@ -39,6 +42,9 @@ public class Menu {
 
     } // END OF showMainMenu()
 
+    /**
+    * Lets the user select the game mode
+    */
     public void showSelectGameMode(){
         Scanner input = new Scanner(System.in);
         boolean isGameGenerated = false;
@@ -103,6 +109,9 @@ public class Menu {
         System.out.println("End of showSelectGameMode() in menu()");
     } // END OF selectionGameMode()
 
+    /**
+    * Handles the launching and ending of the game
+    */
     public void showGamePage(Game inGame) {
         Scanner input = new Scanner(System.in);
 

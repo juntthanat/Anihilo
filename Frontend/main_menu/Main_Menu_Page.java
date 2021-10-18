@@ -11,6 +11,14 @@ import javax.swing.ImageIcon;
 import Frontend.utility.Page_Changer;
 
 public class Main_Menu_Page {
+    /**
+    * Constructs the main menu
+    *
+    * @param main_page The main page
+    * @param page      The page to be switched to
+    *
+    * @return JPanel The main menu
+    */
     public static JPanel Main_Menu(JPanel main_page, CardLayout page, JFrame main) {
 
         JPanel menu = new JPanel();

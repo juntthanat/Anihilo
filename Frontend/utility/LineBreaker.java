@@ -3,6 +3,12 @@ package Frontend.utility;
 import java.lang.StringBuilder;
 
 public class LineBreaker {
+    /** TOFIX
+    * Adds a line break
+    *
+    * @param s     The input String
+    * @param space The number of spaces to add
+    */
     public static String breaker(String s, int space) {
         // * add <BR/> in " " in the last every 30 letter or less
         StringBuilder sb = new StringBuilder(s);

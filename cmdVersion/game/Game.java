@@ -18,6 +18,15 @@ public class Game {
     LifeControl lifeControl;
     ScoreControl scoreControl;
 
+    /**
+    * The class constructor which receives all options
+    *
+    * @param questionControl The question factory
+    * @param lifeControl     A lifeControl object that updates the status of the player
+    * @param scoreControl    A scoreContorl object that updates the score of the user
+    *
+    * @throws ConnectionError
+    */
     public Game(QuestionControl questionControl, LifeControl lifeControl, ScoreControl scoreControl) throws ConnectionError {
         this.questionControl = questionControl;
         this.lifeControl = lifeControl;
@@ -28,16 +37,32 @@ public class Game {
         this.gameStats = new GameStats();
     }
 
+    /**
+    * The class constructor which creates this object based on
+    * another Game object
+    *
+    * @param another The Game object to base this object on
+    *
+    * @throws ConnectionError
+    */
     public Game(Game another) throws ConnectionError{
         this(another.questionControl, another.lifeControl, another.scoreControl);
     }
 
+    /**
+    * Updates the status of the player
+    */
     public void update(){
         this.questionControl.update(this.gameStats);
         this.lifeControl.update(this.gameStats);
         this.scoreControl.update(this.gameStats);
     }
 
+    /**
+    * Returns the information string
+    *
+    * @return String An information String
+    */
     @Override
     public String toString() {
         return "Game\n" +
@@ -49,6 +74,9 @@ public class Game {
              ;
     }
 
+    /**
+    * Runs the game
+    */
     public void run(){
         Scanner input = new Scanner(System.in);
         Integer userAnswer = -5;

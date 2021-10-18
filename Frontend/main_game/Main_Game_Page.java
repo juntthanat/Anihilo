@@ -4,6 +4,14 @@ import java.awt.CardLayout;
 import javax.swing.JPanel;
 
 public class Main_Game_Page {
+        /**
+        * Constructs a page for the main game
+        *
+        * @param main_page The main page
+        * @param page      A page to be switched to
+        *
+        * @return JPanel The main game page
+        */
         public static JPanel Main_Game(JPanel main_page, CardLayout page) {
                 JPanel menu = new JPanel();
                 menu.setBounds(0, 0, 750, 600);
