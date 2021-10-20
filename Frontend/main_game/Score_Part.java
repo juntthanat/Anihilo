@@ -9,6 +9,7 @@ import Frontend.utility.Score_Changer;
 import Frontend.utility.Utils;
 
 public class Score_Part {
+        Score_Changer scoreChanger;
         /**
         * Constructs a section that shows the score of the player
         *
@@ -51,6 +52,10 @@ public class Score_Part {
                 accuracy_border.add(accuracy);
                 main_game_page.add(accuracy_border);
 
-                new Score_Changer(score, guess, accuracy);
+                scoreChanger = new Score_Changer(score, guess, accuracy);
+        }
+
+        public Score_Changer getScoreChanger() {
+            return scoreChanger;
         }
 }

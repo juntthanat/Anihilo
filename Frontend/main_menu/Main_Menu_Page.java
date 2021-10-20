@@ -11,6 +11,13 @@ import javax.swing.ImageIcon;
 import Frontend.utility.Page_Changer;
 
 public class Main_Menu_Page {
+    JButton start_game = new JButton("Start");
+    JButton quit_game = new JButton("Quit");
+    JPanel mainMenu;
+
+    public Main_Menu_Page(JPanel main_page, CardLayout page, JFrame main) {
+        mainMenu = Main_Menu(main_page, page, main);
+    }
     /**
     * Constructs the main menu
     *
@@ -19,7 +26,7 @@ public class Main_Menu_Page {
     *
     * @return JPanel The main menu
     */
-    public static JPanel Main_Menu(JPanel main_page, CardLayout page, JFrame main) {
+    public JPanel Main_Menu(JPanel main_page, CardLayout page, JFrame main) {
 
         JPanel menu = new JPanel();
 
@@ -34,16 +41,14 @@ public class Main_Menu_Page {
         menu.add(icon_space);
 
         // Create a Button
-        JButton start_game = new JButton("Start");
         start_game.setBounds(225, 230, 300, 30);
-        start_game.addActionListener(new ActionListener() {
+/*        start_game.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Page_Changer.set_page("page2");
                 Page_Changer.Change(main_page, page);
             }
         });
-
-        JButton quit_game = new JButton("Quit");
+*/
         quit_game.setBounds(225, 300, 300, 30);
         quit_game.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -58,5 +63,13 @@ public class Main_Menu_Page {
 
         menu.setVisible(true);
         return menu;
+    }
+
+    public JPanel getMainMenu() {
+        return mainMenu;
+    }
+
+    public JButton getStartGameButton() {
+        return start_game;
     }
 }

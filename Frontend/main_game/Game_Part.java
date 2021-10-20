@@ -12,6 +12,10 @@ import Frontend.utility.AnimeTitle_Changer;
 import Frontend.utility.Score_Changer;
 
 public class Game_Part {
+    JButton button_L;
+    JButton button_R;
+    Image_Changer img;
+    AnimeTitle_Changer titleChanger;
     /**
     * Creates buttons and image panels
     *
@@ -30,15 +34,15 @@ public class Game_Part {
         // small (110x156)
 
         // * Goto Utility Image_Changer for more info
-        Image_Changer img = new Image_Changer();
+        img = new Image_Changer();
 
-        JButton button_L = new JButton(img.getImage_L());
-        JButton button_R = new JButton(img.getImage_R());
+        button_L = new JButton(img.getImage_L());
+        button_R = new JButton(img.getImage_R());
 
         button_L.setBounds(120, 80, 195, 277);
         button_R.setBounds(435, 80, 195, 277);
 
-        button_L.addActionListener(new ActionListener() {
+/*        button_L.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 button_L.setIcon(img.getImage_L());
                 Instruction_Changer.change_instruction();
@@ -46,7 +50,8 @@ public class Game_Part {
                 Score_Changer.change_scoreBoard();
             }
         });
-        button_R.addActionListener(new ActionListener() {
+*/
+/*        button_R.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 button_R.setIcon(img.getImage_R());
                 Instruction_Changer.change_instruction();
@@ -54,7 +59,7 @@ public class Game_Part {
                 Score_Changer.change_scoreBoard();
             }
         });
-
+*/
         main_game_page.add(button_L);
         main_game_page.add(button_R);
 
@@ -72,8 +77,24 @@ public class Game_Part {
 
         main_game_page.add(aniPanel_L);
         main_game_page.add(aniPanel_R);
-        new AnimeTitle_Changer(aniL_text, aniR_text);
+        titleChanger = new AnimeTitle_Changer(aniL_text, aniR_text);
         Instruction_Changer.change_instruction();
-        AnimeTitle_Changer.changeAnimeTitle();
+//        AnimeTitle_Changer.changeAnimeTitle();
+    }
+
+    public JButton getLeftButton() {
+        return button_L;
+    }
+
+    public JButton getRightButton() {
+        return button_R;
+    }
+
+    public Image_Changer getImageChanger() {
+        return img;
+    }
+
+    public AnimeTitle_Changer getTitleChanger() {
+        return titleChanger;
     }
 }

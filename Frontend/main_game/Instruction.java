@@ -11,6 +11,8 @@ import Frontend.utility.Page_Changer;
 import Frontend.utility.Instruction_Changer;
 
 public class Instruction {
+    Instruction_Changer instructionChanger;
+
     /**
     * Shows the instruction
     *
@@ -49,6 +51,10 @@ public class Instruction {
         diff_panel.add(diff_text);
         main_game_page.add(diff_panel);
 
-        new Instruction_Changer(instruction_text, diff_text);
+        instructionChanger = new Instruction_Changer(instruction_text, diff_text);
+    }
+
+    public Instruction_Changer getInstructionChanger() {
+        return instructionChanger;
     }
 }
