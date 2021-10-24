@@ -16,13 +16,14 @@ public class Game_Part {
     JButton button_R;
     Image_Changer img;
     AnimeTitle_Changer titleChanger;
+
     /**
-    * Creates buttons and image panels
-    *
-    * @param main_game_page The main game page
-    * @param main_page      The main page
-    * @param page           A page to be switched to
-    */
+     * Creates buttons and image panels
+     *
+     * @param main_game_page The main game page
+     * @param main_page      The main page
+     * @param page           A page to be switched to
+     */
     public Game_Part(JPanel main_game_page, JPanel main_page, CardLayout page) {
         // * Create a button
         // ! Create a getPicture() here for left and right then change the ImageIcon or
@@ -42,24 +43,20 @@ public class Game_Part {
         button_L.setBounds(120, 80, 195, 277);
         button_R.setBounds(435, 80, 195, 277);
 
-/*        button_L.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                button_L.setIcon(img.getImage_L());
-                Instruction_Changer.change_instruction();
-                AnimeTitle_Changer.changeAnimeTitle();
-                Score_Changer.change_scoreBoard();
-            }
-        });
-*/
-/*        button_R.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                button_R.setIcon(img.getImage_R());
-                Instruction_Changer.change_instruction();
-                AnimeTitle_Changer.changeAnimeTitle();
-                Score_Changer.change_scoreBoard();
-            }
-        });
-*/
+        /*
+         * button_L.addActionListener(new ActionListener() { public void
+         * actionPerformed(ActionEvent e) { button_L.setIcon(img.getImage_L());
+         * Instruction_Changer.change_instruction();
+         * AnimeTitle_Changer.changeAnimeTitle(); Score_Changer.change_scoreBoard(); }
+         * });
+         */
+        /*
+         * button_R.addActionListener(new ActionListener() { public void
+         * actionPerformed(ActionEvent e) { button_R.setIcon(img.getImage_R());
+         * Instruction_Changer.change_instruction();
+         * AnimeTitle_Changer.changeAnimeTitle(); Score_Changer.change_scoreBoard(); }
+         * });
+         */
         main_game_page.add(button_L);
         main_game_page.add(button_R);
 
@@ -69,17 +66,23 @@ public class Game_Part {
         aniPanel_L.setBounds(100, 350, 235, 100);
         JPanel aniPanel_R = new JPanel();
         aniPanel_R.setBounds(415, 350, 235, 100);
+        // add a text that show whether the answer is correct or wrong
+        JPanel resultPanel = new JPanel();
+        resultPanel.setBounds(345, 205, 60, 30);
 
         JLabel aniL_text = new JLabel();
         aniPanel_L.add(aniL_text);
         JLabel aniR_text = new JLabel();
         aniPanel_R.add(aniR_text);
+        JLabel result = new JLabel("<html><p{text-alignment: center;} style=\"font-size:12px\"> or </p></html>");
+        resultPanel.add(result);
 
         main_game_page.add(aniPanel_L);
         main_game_page.add(aniPanel_R);
-        titleChanger = new AnimeTitle_Changer(aniL_text, aniR_text);
+        main_game_page.add(resultPanel);
+        titleChanger = new AnimeTitle_Changer(aniL_text, aniR_text, result);
         Instruction_Changer.change_instruction();
-//        AnimeTitle_Changer.changeAnimeTitle();
+        // AnimeTitle_Changer.changeAnimeTitle();
     }
 
     public JButton getLeftButton() {

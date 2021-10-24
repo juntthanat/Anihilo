@@ -26,8 +26,7 @@ public class GUI extends Main_GUI {
     JButton leftButton, rightButton;
     AnimeTitle_Changer titleChanger;
 
-    public GUI()
-        throws Exception {
+    public GUI() throws Exception {
         super();
         mainGame = getMainGamePage();
         mainMenu = getMainMenuPage();
@@ -41,28 +40,28 @@ public class GUI extends Main_GUI {
     }
 
     /**
-    * Sets the callback function of the left anime's button
-    *
-    * @param callback The callback function.
-    */
-    public void setLeftAnimeButtonCallback (ActionListener callback) {
+     * Sets the callback function of the left anime's button
+     *
+     * @param callback The callback function.
+     */
+    public void setLeftAnimeButtonCallback(ActionListener callback) {
         leftButton.addActionListener(callback);
     }
 
     /**
-    * Sets the callback function of the right anime's button
-    *
-    * @param callback The callback function.
-    */
-    public void setRightAnimeButtonCallback (ActionListener callback) {
+     * Sets the callback function of the right anime's button
+     *
+     * @param callback The callback function.
+     */
+    public void setRightAnimeButtonCallback(ActionListener callback) {
         rightButton.addActionListener(callback);
     }
 
     /**
-    * ONLY USE THIS FUNCTION IN TEST ENVIRONMENT
-    */
+     * ONLY USE THIS FUNCTION IN TEST ENVIRONMENT
+     */
     public void useDefaultButtonBehavior() {
-        setLeftAnimeButtonCallback (new ActionListener() {
+        setLeftAnimeButtonCallback(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 updateButtonImages();
                 updateInstructionText();
@@ -71,7 +70,7 @@ public class GUI extends Main_GUI {
             }
         });
 
-        setRightAnimeButtonCallback (new ActionListener() {
+        setRightAnimeButtonCallback(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 updateButtonImages();
                 updateInstructionText();
@@ -84,10 +83,10 @@ public class GUI extends Main_GUI {
     }
 
     /**
-    * Uses the default behavior of the start button
-    */
+     * Uses the default behavior of the start button
+     */
     public void useDefaultStartButton() {
-        setStartGameButtonCallback (new ActionListener() {
+        setStartGameButtonCallback(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Page_Changer.set_page("page2");
                 Page_Changer.Change(getDeck(), getCardLayoutPage());
@@ -96,191 +95,183 @@ public class GUI extends Main_GUI {
     }
 
     /**
-    * Sets the path to left button's image WITHOUT updating
-    * the button's image.
-    *
-    * @param path The path to the image.
-    */
+     * Sets the path to left button's image WITHOUT updating the button's image.
+     *
+     * @param path The path to the image.
+     */
     public void setLeftButtonImagePath(String path) {
         img.setImage_L(path);
     }
 
     /**
-    * Sets the path to right button's image WITHOUT updating
-    * the button's image.
-    *
-    * @param path The path to the image.
-    */
+     * Sets the path to right button's image WITHOUT updating the button's image.
+     *
+     * @param path The path to the image.
+     */
     public void setRightButtonImagePath(String path) {
         img.setImage_R(path);
     }
 
     /**
-    * Updates left button's image from the path set earlier
-    * using setLeftButtonImagePath(String)
-    */
+     * Updates left button's image from the path set earlier using
+     * setLeftButtonImagePath(String)
+     */
     private void updateLeftButtonImage() {
         leftButton.setIcon(img.getImage_L());
     }
 
     /**
-    * Updates right button's image from the path set earlier
-    * using setRightButtonImagePath(String)
-    */
+     * Updates right button's image from the path set earlier using
+     * setRightButtonImagePath(String)
+     */
     private void updateRightButtonImage() {
         rightButton.setIcon(img.getImage_R());
     }
 
     /**
-    * Updates both buttons' images
-    */
+     * Updates both buttons' images
+     */
     public void updateButtonImages() {
         updateLeftButtonImage();
         updateRightButtonImage();
     }
 
     /**
-    * Sets and updates the image of the left button
-    *
-    * @param path The path to the image
-    */
-    private void setLeftImage (String path) {
+     * Sets and updates the image of the left button
+     *
+     * @param path The path to the image
+     */
+    private void setLeftImage(String path) {
         img.setImage_L(path);
         leftButton.setIcon(img.getImage_L());
     }
 
     /**
-    * Sets and updates the image of the right button
-    *
-    * @param path The path to the image
-    */
-    private void setRightImage (String path) {
+     * Sets and updates the image of the right button
+     *
+     * @param path The path to the image
+     */
+    private void setRightImage(String path) {
         img.setImage_R(path);
         rightButton.setIcon(img.getImage_R());
     }
 
     /**
-    * Sets and updates the images of the buttons
-    *
-    * @param left_path  The path to left anime's image.
-    * @param right_path The path to right anime's image.
-    */
-    public void setButtonImages (String left_path, String right_path) {
-        setLeftImage (left_path);
-        setRightImage (right_path);
+     * Sets and updates the images of the buttons
+     *
+     * @param left_path  The path to left anime's image.
+     * @param right_path The path to right anime's image.
+     */
+    public void setButtonImages(String left_path, String right_path) {
+        setLeftImage(left_path);
+        setRightImage(right_path);
     }
 
     /**
-    * Sets the left anime's title WITHOUT updating it in
-    * the GUI.
-    *
-    * @param title The anime's title
-    */
+     * Sets the left anime's title WITHOUT updating it in the GUI.
+     *
+     * @param title The anime's title
+     */
     public void setLeftAnimeTitle(String title) {
-        titleChanger.setAnimeTitle_L (title);
+        titleChanger.setAnimeTitle_L(title);
     }
 
     /**
-    * Sets the right anime's title WITHOUT updating it in
-    * the GUI.
-    *
-    * @param title The anime's title
-    */
+     * Sets the right anime's title WITHOUT updating it in the GUI.
+     *
+     * @param title The anime's title
+     */
     public void setRightAnimeTitle(String title) {
-        titleChanger.setAnimeTitle_R (title);
+        titleChanger.setAnimeTitle_R(title);
     }
 
     /**
-    * Sets both anime's title WITHOUT updating it in the GUI
-    *
-    * @param left_title  The left anime's title
-    * @param right_title The right anime's title
-    */
+     * Sets both anime's title WITHOUT updating it in the GUI
+     *
+     * @param left_title  The left anime's title
+     * @param right_title The right anime's title
+     */
     public void setAnimeTitle(String left_title, String right_title) {
         setLeftAnimeTitle(left_title);
         setRightAnimeTitle(right_title);
     }
 
     /**
-    * Updates both animes title in the GUI
-    */
+     * Updates both animes title in the GUI
+     */
     public void updateAnimeTitle() {
         titleChanger.changeAnimeTitle();
     }
 
     /**
-    * Sets and updates the Anime Titles
-    *
-    * @param left_title  The title of the left anime.
-    * @param right_title The title of the right anime.
-    */
+     * Sets and updates the Anime Titles
+     *
+     * @param left_title  The title of the left anime.
+     * @param right_title The title of the right anime.
+     */
     public void setAndUpdateAnimeTitles(String left_title, String right_title) {
-        titleChanger.setAnimeTitle_L (left_title);
-        titleChanger.setAnimeTitle_R (right_title);
+        titleChanger.setAnimeTitle_L(left_title);
+        titleChanger.setAnimeTitle_R(right_title);
         titleChanger.changeAnimeTitle();
     }
 
     /**
-    * Sets the callback function for the start game button in
-    * the main menu page.
-    *
-    * @param callback The callback function
-    */
-    public void setStartGameButtonCallback (ActionListener callback) {
+     * Sets the callback function for the start game button in the main menu page.
+     *
+     * @param callback The callback function
+     */
+    public void setStartGameButtonCallback(ActionListener callback) {
         mainMenu.getStartGameButton().addActionListener(callback);
     }
 
     /**
-    * Sets the score without updating the scoreboard.
-    * Seeี updateScoreboard(String, String, String) for
-    * changing the score + updating the scoreboard or
-    * updateScoreboard() for just updating the scoreboard.
-    *
-    * @param s The score of the player
-    */
+     * Sets the score without updating the scoreboard. Seeี updateScoreboard(String,
+     * String, String) for changing the score + updating the scoreboard or
+     * updateScoreboard() for just updating the scoreboard.
+     *
+     * @param s The score of the player
+     */
     public void setScore(String s) {
         scoreChanger.set_score(s);
     }
 
     /**
-    * Sets the accuracy without updating the scoreboard.
-    * See updateScoreboard(String, String, String) for
-    * changing the accuracy + updating the scoreboard or
-    * updateScoreboard() for just updating the scoreboard.
-    *
-    * @param s The accuracy of the player
-    */
+     * Sets the accuracy without updating the scoreboard. See
+     * updateScoreboard(String, String, String) for changing the accuracy + updating
+     * the scoreboard or updateScoreboard() for just updating the scoreboard.
+     *
+     * @param s The accuracy of the player
+     */
     public void setAccuracy(String s) {
         scoreChanger.set_accuracy(s);
     }
 
     /**
-    * Sets the guess without updating the scoreboard.
-    * See updateScoreboard(String, String, String) for
-    * changing the guess + updating the scoreboard or
-    * updateScoreboard() for just updating the scoreboard.
-    *
-    * @param s The guess of the player
-    */
+     * Sets the guess without updating the scoreboard. See updateScoreboard(String,
+     * String, String) for changing the guess + updating the scoreboard or
+     * updateScoreboard() for just updating the scoreboard.
+     *
+     * @param s The guess of the player
+     */
     public void setGuess(String s) {
         scoreChanger.set_guess(s);
     }
 
     /**
-    * Updates the scoreboard
-    */
+     * Updates the scoreboard
+     */
     public void updateScoreboard() {
         scoreChanger.change_scoreBoard();
     }
 
     /**
-    * Setting the values of score, accuracy, and guess of
-    * the player and updates the scoreboard.
-    *
-    * @param score    The score of the player.
-    * @param accuracy The accuracy of the player.
-    * @param guess    The guess of the player.
-    */
+     * Setting the values of score, accuracy, and guess of the player and updates
+     * the scoreboard.
+     *
+     * @param score    The score of the player.
+     * @param accuracy The accuracy of the player.
+     * @param guess    The guess of the player.
+     */
     public void updateScoreboard(String score, String accuracy, String guess) {
         setScore(score);
         setAccuracy(accuracy);
@@ -289,35 +280,35 @@ public class GUI extends Main_GUI {
     }
 
     /**
-    * Sets and updates the instruction text.
-    *
-    * @param instruction The instruction text.
-    */
+     * Sets and updates the instruction text.
+     *
+     * @param instruction The instruction text.
+     */
     public void setAndUpdateInstructionText(String instruction) {
         instructionChanger.set_instruction(instruction);
         instructionChanger.change_instruction();
     }
 
     /**
-    * Changes the instruction text without updating the
-    * instruction text in the GUI.
-    */
+     * Changes the instruction text without updating the instruction text in the
+     * GUI.
+     */
     public void setInstructionText(String instruction) {
         instructionChanger.set_instruction(instruction);
     }
 
     /**
-    * Updates the instruction text in the GUI.
-    */
+     * Updates the instruction text in the GUI.
+     */
     public void updateInstructionText() {
         instructionChanger.change_instruction();
     }
 
     /**
-    * Sets and updates the difficulty text.
-    *
-    * @param difficultyText The difficulty text.
-    */
+     * Sets and updates the difficulty text.
+     *
+     * @param difficultyText The difficulty text.
+     */
     public void setDifficultyText(String difficultyText) {
         instructionChanger.set_diff(difficultyText);
         instructionChanger.change_diff();

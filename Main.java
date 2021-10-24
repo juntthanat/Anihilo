@@ -15,7 +15,7 @@ public class Main {
             // ENVIRONMENT
             // gui.useDefaultButtonBehavior();
 
-            gui.setLeftAnimeButtonCallback (new ActionListener() {
+            gui.setLeftAnimeButtonCallback(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     gui.setButtonImages("./animeImage/rick.png", "./animeImage/rick.png");
                     gui.updateButtonImages();
@@ -33,7 +33,7 @@ public class Main {
                 }
             });
 
-            gui.setRightAnimeButtonCallback (new ActionListener() {
+            gui.setRightAnimeButtonCallback(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     gui.setButtonImages("./animeImage/rick.png", "./animeImage/rick.png");
                     gui.updateButtonImages();

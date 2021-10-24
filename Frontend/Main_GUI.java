@@ -17,7 +17,7 @@ public class Main_GUI {
     Main_Game_Page main_game;
 
     Main_GUI() throws Exception {
-//        JFrame main_page = new JFrame();
+        // JFrame main_page = new JFrame();
         main_page = new JFrame();
 
         // * Setting Frame Size and etc
@@ -45,11 +45,10 @@ public class Main_GUI {
 
         main_page.add(deck);
 
-
     }
-//    public static void main(String[] args) throws Exception {
-    public void start()
-        throws Exception {
+
+    // public static void main(String[] args) throws Exception {
+    public void start() throws Exception {
         // * make JFrame visible (need to be put last)
         main_page.setVisible(true);
     }
