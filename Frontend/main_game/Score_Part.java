@@ -24,7 +24,7 @@ public class Score_Part {
                 // * Create Border
                 // * Panel for streak
                 JPanel streak_border = new JPanel();
-                streak_border.setBounds(330, 235, 100, 60);
+                streak_border.setBounds(325, 235, 100, 60);
                 JLabel streak = new JLabel(
                                 Utils.toHTML("<p style='font-size:10px; text-align:center;'>Streak <br />0</p>"));
                 streak_border.add(streak);

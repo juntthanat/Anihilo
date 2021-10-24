@@ -22,6 +22,7 @@ public class Main_GUI {
 
         // * Setting Frame Size and etc
         main_page.setSize(750, 600);
+        main_page.setResizable(false);
         main_page.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         main_page.setLayout(null);
 
