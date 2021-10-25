@@ -31,6 +31,12 @@ public class AnimeTitle_Changer {
         aniL.setText("<html><p{text-alignment: center;} style=\"font-size:12px\">" + animeTitle_L + "</p></html>");
         animeTitle_R = LineBreaker.breaker(animeTitle_R, 25);
         aniR.setText("<html><p{text-alignment: center;} style=\"font-size:12px\">" + animeTitle_R + "</p></html>");
+    }
+
+    /**
+     * Updates the result text
+     */
+    public void updateResultText() {
         result.setText("<html><p{text-alignment: center;} style=\"font-size:12px\">" + resultText + "</p></html>");
     }
 

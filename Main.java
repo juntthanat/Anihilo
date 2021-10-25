@@ -23,6 +23,9 @@ public class Main {
                     gui.setInstructionText("Never gonna give you up");
                     gui.updateInstructionText();
 
+                    gui.setResultText("Rick!");
+                    gui.updateResultText();
+
                     gui.setScore("420");
                     gui.setAccuracy("69");
                     gui.setGuess("69");
@@ -40,6 +43,9 @@ public class Main {
 
                     gui.setInstructionText("Never gonna give you up");
                     gui.updateInstructionText();
+
+                    gui.setResultText("Rick!");
+                    gui.updateResultText();
 
                     gui.setScore("420");
                     gui.setAccuracy("69");

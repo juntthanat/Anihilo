@@ -224,6 +224,22 @@ public class GUI extends Main_GUI {
     }
 
     /**
+     * Sets the result text without changing the GUI
+     *
+     * @param resultText The result text
+     */
+    public void setResultText(String resultText) {
+        titleChanger.setResult(resultText);
+    }
+
+    /**
+     * Updates the result text in the GUI
+     */
+    public void updateResultText() {
+        titleChanger.updateResultText();
+    }
+
+    /**
      * Sets the callback function for the start game button in the main menu page.
      *
      * @param callback The callback function
