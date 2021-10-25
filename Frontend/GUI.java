@@ -17,6 +17,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class GUI extends Main_GUI {
+    private static GUI instance;
     Main_Menu_Page mainMenu;
     Main_Game_Page mainGame;
     Game_Part gamePart;
@@ -26,7 +27,7 @@ public class GUI extends Main_GUI {
     JButton leftButton, rightButton;
     AnimeTitle_Changer titleChanger;
 
-    public GUI() throws Exception {
+    private GUI() throws Exception {
         super();
         mainGame = getMainGamePage();
         mainMenu = getMainMenuPage();
@@ -37,6 +38,13 @@ public class GUI extends Main_GUI {
         leftButton = gamePart.getLeftButton();
         rightButton = gamePart.getRightButton();
         titleChanger = gamePart.getTitleChanger();
+    }
+
+    public static GUI getInstance() throws Exception {
+        if (instance == null) {
+            instance = new GUI();
+        }
+        return instance;
     }
 
     /**
