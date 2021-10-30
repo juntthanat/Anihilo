@@ -84,4 +84,13 @@ public class GameStats {
                 "latestQuestionAnsweredCorrect: " + latestQuestionAnsweredCorrect + "\n"
                 ;
     }
+
+    // Reset to initial state
+    public void reset(){
+        guessAmount = 0;
+        guessCorrect = 0;
+        guessAccuracy = 0;
+        guessCorrectStreak = 0;
+        question = null;
+    }
 }

@@ -13,6 +13,10 @@ public class Question {
     String type = "Question object default type";
     int answer = 0; // -1 is left, 0 is both correct, 1 is right
 
+    public static final Integer ANSWER_LEFT = -1;
+    public static final Integer ANSWER_RIGHT = 1;
+    public static final Integer ANSWER_BOTH_CORRECT = 0;
+
     /**
     * The Class Constructor
     *
@@ -100,6 +104,10 @@ public class Question {
         return getAnimeQuestionRelevantData(rightAnime);
     }
 
+    public String getType() {
+        return type;
+    }
+
     /**
     * Gets the relevant data of the Anime
     *
@@ -132,7 +140,7 @@ public class Question {
     */
     public boolean checkAnswer(int userAnswer){
         // this.answer == 0 means both side are correct "a freebie"
-        return (userAnswer == this.answer) || (this.answer == 0);
+        return (userAnswer == this.answer) || (this.answer == Question.ANSWER_BOTH_CORRECT);
     }
 
     /**

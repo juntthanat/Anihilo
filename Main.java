@@ -1,3 +1,5 @@
+import cmdVersion.game.Game;
+import cmdVersion.game.GameFactory;
 import connection.*;
 import Frontend.GUI;
 
@@ -11,9 +13,15 @@ public class Main {
             GUI gui = GUI.getInstance();
             gui.useDefaultStartButton();
 
+            Game game = null;
+            game = GameFactory.createGame(GameFactory.gameModes[0]);
+            game.initializeGame();
+
             // ONLY USE useDefaultButtonBehavior IN TEST
             // ENVIRONMENT
             // gui.useDefaultButtonBehavior();
+
+            Game finalGame = game;
 
             gui.setLeftAnimeButtonCallback(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
@@ -33,6 +41,11 @@ public class Main {
 
                     gui.setAnimeTitle("Never gonna run around", "and desert you");
                     gui.updateAnimeTitle();
+                    gui.setDifficultyText("VERY EASY");
+                    System.out.println("Clicked left anime button");
+                    finalGame.clickButtonLeftAnimeImg();
+                    finalGame.clickButtonNextQuestion();
+
                 }
             });
 
@@ -54,6 +67,10 @@ public class Main {
 
                     gui.setAnimeTitle("Never gonna run around", "and desert you");
                     gui.updateAnimeTitle();
+                    System.out.println("Clicked right anime button");
+
+                    finalGame.clickButtonRightAnimeImg();
+                    finalGame.clickButtonNextQuestion();
                 }
             });
 

@@ -63,4 +63,9 @@ public class StageQuestionControl extends QuestionControl {
     public void update(GameStats gameStats) {
         this.correctGuess = gameStats.getGuessCorrect();
     }
+
+    @Override
+    public void reset() {
+        correctGuess = 0;
+    }
 }

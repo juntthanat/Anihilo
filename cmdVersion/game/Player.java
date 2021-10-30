@@ -1,6 +1,9 @@
 package cmdVersion.game;
 
-public class Player {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class Player implements ActionListener {
     String name;
 
     // Stats
@@ -14,7 +17,8 @@ public class Player {
     int nextLifeGuess;
 
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
 
-
-
+    }
 }

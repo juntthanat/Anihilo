@@ -4,16 +4,17 @@ import cmdVersion.game.stats.GameStats;
 
 public class StageLifeControl extends LifeControl{
 
+    public static final Integer DEFAULT_AMOUNT_OF_LIVES = 3;
+
     Integer remainingLives = 3;
-    final Integer baseGuessTillNextLife = 3;
+    final Integer DEFAULT_CORRECT_GUESS_TILL_NEXT_LIFE = 3;
     Integer lifeGivenOut = 0;
     Integer correctGuessTillNextLife = 0;
-
     /**
     * Class constructor
     */
     public StageLifeControl(){
-        correctGuessTillNextLife = lifeGivenOut + baseGuessTillNextLife;
+        correctGuessTillNextLife = lifeGivenOut + DEFAULT_CORRECT_GUESS_TILL_NEXT_LIFE;
     }
 
     /**
@@ -36,7 +37,7 @@ public class StageLifeControl extends LifeControl{
             if(correctGuessTillNextLife <= 0){
                 remainingLives++;
                 lifeGivenOut++;
-                correctGuessTillNextLife = baseGuessTillNextLife + lifeGivenOut;
+                correctGuessTillNextLife = DEFAULT_CORRECT_GUESS_TILL_NEXT_LIFE * lifeGivenOut;
             }
         } else {
             remainingLives--;
@@ -54,5 +55,12 @@ public class StageLifeControl extends LifeControl{
         output += "Remaining lives: " + remainingLives + "\n";
         output += "Correct guess til next life: " + correctGuessTillNextLife + "\n";
         return output;
+    }
+
+    @Override
+    public void reset() {
+        remainingLives = DEFAULT_AMOUNT_OF_LIVES;
+        lifeGivenOut = 0;
+        correctGuessTillNextLife = DEFAULT_CORRECT_GUESS_TILL_NEXT_LIFE;
     }
 }

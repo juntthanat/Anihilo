@@ -12,7 +12,7 @@ import connection.ConnectionError;
 public class GameFactory {
     public static final String[] gameModes = {"Classic"};
 
-    public static Game createGame(String gameModeName) throws ConnectionError {
+    public static Game createGame(String gameModeName) {
 
         QuestionControl questionControl;
         ScoreControl scoreControl;

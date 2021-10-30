@@ -36,9 +36,8 @@ public class QuestionMaker {
     *
     * @throws ConnectionError
     */
-    public QuestionMaker() throws ConnectionError {
+    public QuestionMaker() {
         this.generateRandomNumberList();
-        this.fillAnimeList();
     }
 
     /**
@@ -73,7 +72,7 @@ public class QuestionMaker {
     * Generates a Question with determined difficulty and type
     *
     * @param difficulty The difficulty of the Question
-    * @param type       The type of the question
+    * @param inType       The type of the question
     * @return Question The generated Question
     * @throws ConnectionError
     */
@@ -145,11 +144,11 @@ public class QuestionMaker {
         int answer;
         int comparatorInt = comparator.compare(anime1,anime2);
         if(comparatorInt > 0){ // Anime1 which is on the left is selected to be the answer
-            answer = -1;
+            answer = Question.ANSWER_LEFT;
         } else if (comparatorInt == 0){
-            answer = 0;
+            answer = Question.ANSWER_BOTH_CORRECT;
         } else {
-            answer = 1;
+            answer = Question.ANSWER_RIGHT;
         }
 
         // Download img of anime if needed

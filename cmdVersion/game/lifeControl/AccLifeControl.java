@@ -3,6 +3,7 @@ package cmdVersion.game.lifeControl;
 import cmdVersion.game.stats.GameStats;
 
 public class AccLifeControl extends LifeControl {
+
     private double MIN_ACC;
     private double currentAcc;
 
@@ -10,8 +11,8 @@ public class AccLifeControl extends LifeControl {
     * Class constructor
     */
     public AccLifeControl() {
-        MIN_ACC = 50.0;
-        currentAcc = 100.0;
+        MIN_ACC = 0.5;
+        currentAcc = 1;
     }
 
     /**
@@ -21,7 +22,7 @@ public class AccLifeControl extends LifeControl {
     */
     public AccLifeControl (double minAcc) {
         MIN_ACC = minAcc;
-        currentAcc = 0.0;
+        currentAcc = 1;
     }
 
     /**
@@ -52,5 +53,10 @@ public class AccLifeControl extends LifeControl {
         String outString = "MINIMUM Threshold: " + MIN_ACC + "\n";
         outString += "Current Accuracy: " + currentAcc + "\n";
         return outString;
+    }
+
+    @Override
+    public void reset() {
+        currentAcc = 1;
     }
 }

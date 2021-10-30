@@ -13,17 +13,18 @@ public class Menu {
     /**
     * Displays the main menu
     */
+    @Deprecated
     public void showMainMenu() {
         Scanner input = new Scanner(System.in);
         Integer userInput = -1;
 
 
         while(userInput != EXIT) {
-            System.out.println("Main menu page (Show the main menu page)");
+            System.out.println("Main menu page (Show the main menu page)"); // Here like GUI.showMainMenuPage()
             System.out.println("0. Exit");
             System.out.println("1. Play");
             System.out.println("Select your option: (At this point the algorithm is waiting for a user to press button)");
-            userInput = Integer.parseInt(input.nextLine());
+            userInput = Integer.parseInt(input.nextLine()); // Here like GUI.getUserInputMainMenuPage()
 
 
             switch (userInput) {
@@ -34,7 +35,7 @@ public class Menu {
                 case 1 -> {
                     System.out.println("User have selected option 1: Play");
                     System.out.println("Prepare to move to play page");
-                    showSelectGameMode();
+                    showSelectGameMode(); // GUI.showSelectGameModePage()
                 }
             }
         }
@@ -45,6 +46,7 @@ public class Menu {
     /**
     * Lets the user select the game mode
     */
+    @Deprecated
     public void showSelectGameMode(){
         Scanner input = new Scanner(System.in);
         boolean isGameGenerated = false;
@@ -60,7 +62,7 @@ public class Menu {
 //            System.out.println("3. RNG");
 //            System.out.println("4. Practice");
             System.out.println("Select your option: ");
-            userInput = Integer.parseInt(input.nextLine());
+            userInput = Integer.parseInt(input.nextLine()); // GUI.getUserInputSelectGameMode()
 
 
             switch (userInput) {
@@ -91,27 +93,18 @@ public class Menu {
                 break;
             }
 
-            // Generate the game from factory while making sure to ask user to reconnect in case disconnection
-            while(! isGameGenerated){
-                try{
-                    game = GameFactory.createGame(gameModeChoice);
-                    isGameGenerated = true;
-                } catch (ConnectionError e){
-                    System.out.println("Error: Connection error at showSelectGameMode() in Menu()");
-                    System.out.println("Reconnect and press 1 and enter to continue");
-                    input.nextLine();
-                }
-            }
 
+            game = GameFactory.createGame(gameModeChoice);
             showGamePage(game);
-            isGameGenerated = false; // Making sure to create a new game again
         }
         System.out.println("End of showSelectGameMode() in menu()");
+        // Go back to the selection game mode page
     } // END OF selectionGameMode()
 
     /**
     * Handles the launching and ending of the game
     */
+    @Deprecated
     public void showGamePage(Game inGame) {
         Scanner input = new Scanner(System.in);
 

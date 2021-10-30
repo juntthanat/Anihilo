@@ -42,4 +42,10 @@ public class Streak extends LifeControl {
 
         return output;
     }
+
+    @Override
+    public void reset() {
+        streak = 0;
+    }
+
 }

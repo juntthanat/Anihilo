@@ -8,5 +8,6 @@ public abstract class QuestionControl {
     public abstract String getQuestionType();
     public abstract String toString();
     public abstract void update(GameStats gameStats);
+    public abstract void reset();
     
 }

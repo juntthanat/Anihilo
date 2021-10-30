@@ -42,4 +42,9 @@ public class Hardcore extends LifeControl {
 
         return output;
     }
+
+    @Override
+    public void reset() {
+        isDead = false;
+    }
 }
