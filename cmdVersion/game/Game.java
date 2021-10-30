@@ -1,5 +1,6 @@
 package cmdVersion.game;
 
+import Frontend.GUI;
 import cmdVersion.game.lifeControl.LifeControl;
 import cmdVersion.game.questionControl.QuestionControl;
 import cmdVersion.game.questionFactory.Question;
@@ -24,6 +25,10 @@ public class Game {
     public static final Integer GAME_STATE_LOOK_AT_RESULT = 2; // User is looking at the result of the answer
     public static final Integer GAME_STATE_OVER = 3; // User has lose the game
     Integer currentGameState = GAME_STATE_WAITING;
+
+    public static final Integer MAX_GUI_ACCESS_ERROR = 10;
+    public static final String imgPathLeftGameOver = "animeImage\\imgLeftGameOver.png";
+    public static final String imgPathRightGameOver = "animeImage\\imgRightGameOver.png";
 
     /**
     * The class constructor which receives all options
@@ -218,60 +223,156 @@ public class Game {
         currentGameState = GAME_STATE_LOOK_AT_RESULT;
     }
 
+    // Allow the access to the GUI dealing with the GUI exception, return null if there is continuous problem
+    private GUI getGUIAccess(){
+        boolean receivedGUIAccess = false;
+        GUI output = null;
+        for(int i = 0; i < MAX_GUI_ACCESS_ERROR; i++){
+            try{
+                output = GUI.getInstance();
+            }catch (Exception e){
+                System.out.println("Error in getting gui access in getGUIAccess()");
+            }
+        }
+
+        return output;
+    }
+
     // This function would have its print statement replaced the by GUI function like GUI.setLeftAnimeImage()
     private void displayQuestion(){
         Question currentQuestion = gameStats.getQuestion();
-        System.out.println("Update prompt to: " + currentQuestion.getPrompt());
-        System.out.println("Update the leftAnimeImgButton to: " + currentQuestion.getLeftAnimeImgPath());
-        System.out.println("Update the rightAnimeImgButton to: " + currentQuestion.getRightAnimeImgPath());
-        System.out.println("Update the leftAnimeTitle to: " + currentQuestion.getLeftAnime().get_name());
-        System.out.println("Update the rightAnimeTitle to: " + currentQuestion.getRightAnime().get_name());
-        System.out.println("Update GUI questionDifficultyTextBox to: " + currentQuestion.getDifficulty());
-        System.out.println("Update GUI questionControlTypeTextBox to: " + currentQuestion.getType());
+        GUI gui = getGUIAccess();
+
+        if (gui != null) {
+            gui.setInstructionText(currentQuestion.getPrompt());
+            gui.updateInstructionText();
+
+            gui.setLeftButtonImagePath(currentQuestion.getLeftAnimeImgPath());
+            gui.setRightButtonImagePath(currentQuestion.getRightAnimeImgPath());
+            gui.updateButtonImages();
+
+            gui.setLeftAnimeTitle(currentQuestion.getLeftAnime().get_name());
+            gui.setRightAnimeTitle(currentQuestion.getRightAnime().get_name());
+            gui.updateAnimeTitle();
+
+            gui.setDifficultyText(currentQuestion.getDifficulty()); // This doesn't need update apparently
+
+
+        } else { // Access to GUI has failed
+
+            System.out.println("displayQuestion() gui failed displaying as terminal version");
+            System.out.println("Update prompt to: " + currentQuestion.getPrompt());
+            System.out.println("Update the leftAnimeImgButton to: " + currentQuestion.getLeftAnimeImgPath());
+            System.out.println("Update the rightAnimeImgButton to: " + currentQuestion.getRightAnimeImgPath());
+            System.out.println("Update the leftAnimeTitle to: " + currentQuestion.getLeftAnime().get_name());
+            System.out.println("Update the rightAnimeTitle to: " + currentQuestion.getRightAnime().get_name());
+            System.out.println("Update GUI questionDifficultyTextBox to: " + currentQuestion.getDifficulty());
+            System.out.println("Update GUI questionControlTypeTextBox to: " + currentQuestion.getType());
+        }
+
     }
 
     // This function would have its print statement replaced by the GUI function like GUI.setAccuracy()
     private void displayStats(){
-        System.out.println("Update guess to: " + gameStats.getGuessAmount());
-        System.out.println("Update accuracy to: " + gameStats.getGuessAccuracy());
-        System.out.println("Update score to: " + scoreControl.calculateScore());
+        GUI gui = getGUIAccess();
+
+        if(gui != null){
+            gui.setGuess(String.valueOf(gameStats.getGuessAmount()));
+            gui.setAccuracy(String.valueOf(gameStats.getGuessAccuracy()));
+            gui.setScore(String.valueOf(scoreControl.calculateScore()));
+            gui.updateScoreboard();
+        } else {
+            System.out.println("Update guess to: " + gameStats.getGuessAmount());
+            System.out.println("Update accuracy to: " + gameStats.getGuessAccuracy());
+            System.out.println("Update score to: " + scoreControl.calculateScore());
+        }
     }
 
     // This function would have its print statement replaced by the GUI function like GUI.setGameBackGround(Color.RED)
     private void displayUserAnswerCorrectOrWrong(){
-        if(gameStats.isLatestQuestionAnsweredCorrect()){
-            System.out.println("Update gameBackground color: Green");
-        } else {
-            System.out.println("Update gameBackground color: Red");
+        GUI gui = getGUIAccess();
+
+        if(gui != null){
+            if(gameStats.isLatestQuestionAnsweredCorrect()){
+                gui.setResultText("CORRECT");
+            } else {
+                gui.setResultText("WRONG");
+            }
+            gui.updateResultText();
+
+        } else { // Cannot "access" GUI
+            if(gameStats.isLatestQuestionAnsweredCorrect()){
+                System.out.println("Update gameBackground color: Green");
+            } else {
+                System.out.println("Update gameBackground color: Red");
+            }
+
         }
     }
 
     private void displayConnectionErrorPopUp(){
-        System.out.println("Update GUI to show a message box telling user there is internet problem");
-        System.out.println("Pop waiting for user to click OK after to fix internet problem (Press 1 and enter to continue): ");
-        Scanner clickToProceed = new Scanner(System.in);
-        clickToProceed.nextLine();
+        GUI gui = getGUIAccess();
+
+        if(gui != null){
+            System.out.println("displayConnectionErrorPopUp is missing the GUI needed as of 2021 Oct 30");
+        } else {
+            System.out.println("Update GUI to show a message box telling user there is internet problem");
+            System.out.println("Pop waiting for user to click OK after to fix internet problem (Press 1 and enter to continue): ");
+            Scanner clickToProceed = new Scanner(System.in);
+            clickToProceed.nextLine();
+        }
     }
 
     private void displayGameOver(){
-        System.out.println("GUI updates the prompt to: GAME OVER!");
-        System.out.println("GUI updates the leftAnimeImgButton to: imgLeftGameOver.png");
-        System.out.println("GUI updates the rightAnimeImgButton to: imgRightGameOver.png");
-        System.out.println("GUI updates the leftAnimeTitle to: To play again press the reset button");
-        System.out.println("GUI updates the rightAnimeTitle to: To play again press the reset button");
+        GUI gui = getGUIAccess();
+
+        if(gui != null){
+            gui.setInstructionText("GAME OVER!");
+            gui.updateInstructionText();
+
+            gui.setLeftButtonImagePath(imgPathLeftGameOver);
+            gui.setRightButtonImagePath(imgPathRightGameOver);
+            gui.updateButtonImages();
+
+            gui.setLeftAnimeTitle("To play again press the reset button");
+            gui.setRightAnimeTitle("To play again press the reset button");
+            gui.updateAnimeTitle();
+
+        } else {
+            System.out.println("GUI updates the prompt to: GAME OVER!");
+            System.out.println("GUI updates the leftAnimeImgButton to: imgLeftGameOver.png");
+            System.out.println("GUI updates the rightAnimeImgButton to: imgRightGameOver.png");
+            System.out.println("GUI updates the leftAnimeTitle to: To play again press the reset button");
+            System.out.println("GUI updates the rightAnimeTitle to: To play again press the reset button");
+        }
+
     }
 
     // This will update the GUI with info relevant question for the anime
     // Ex: If Qn ask about which anime came out first, this will update with leftAnime 2001-02-03 and rightAnime 2005-07-16
     private void displayAnswer(){
-        System.out.println("GUI update the leftAnimeQuestionRelevantInfo: " + gameStats.getQuestion().getLeftAnimeQuestionRelevantData());
-        System.out.println("GUI update the rightAnimeQuestionRelevantInfo: " + gameStats.getQuestion().getRightAnimeQuestionRelevantData());
+        GUI gui = getGUIAccess();
+        if(gui != null){
+            System.out.println("GUI missing function to display the \"answer\" ");
+            System.out.println("GUI missing function to display the relevant anime data as of 2021 Oct 30");
+
+        } else {
+            System.out.println("GUI update the leftAnimeQuestionRelevantInfo: " + gameStats.getQuestion().getLeftAnimeQuestionRelevantData());
+            System.out.println("GUI update the rightAnimeQuestionRelevantInfo: " + gameStats.getQuestion().getRightAnimeQuestionRelevantData());
+        }
+
     }
 
     // Display the lifeControl system which show the user how far they are from reaching game over
     // Basically it show the stats relating when will the user lose, but we have many different implementation
     private void displayLifeControl(){
-        System.out.println("Update GUI lifeControlTextBox to: " + lifeControl.toString());
+        GUI gui = getGUIAccess();
+        if (gui != null) {
+            System.out.println("GUI missing function to display the life control in game.displayLifeControl()");
+        } else {
+            System.out.println("Update GUI lifeControlTextBox to: " + lifeControl.toString());
+        }
+
     }
 
     // Interact-able methods or buttons
