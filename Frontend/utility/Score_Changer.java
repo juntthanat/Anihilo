@@ -32,6 +32,8 @@ public class Score_Changer {
      * Changes the text of the score, accuracy and guess labels
      */
     public static void change_scoreBoard() {
+        if (accuracy_text.length() > 3)
+            accuracy_text = accuracy_text.substring(0, 4);
         score.setText(Utils.toHTML("<p style='font-size:20px; text-align:center;'>Score<br />" + score_text + "</p>"));
         accuracy.setText(
                 Utils.toHTML("<p style='font-size:20px; text-align:center;'>Accuracy<br />" + accuracy_text + "</p>"));

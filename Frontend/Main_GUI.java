@@ -16,7 +16,7 @@ public class Main_GUI {
     Main_Menu_Page main_menu;
     Main_Game_Page main_game;
 
-    Main_GUI() throws Exception {
+    Main_GUI() {
         // JFrame main_page = new JFrame();
         main_page = new JFrame();
 
@@ -49,7 +49,7 @@ public class Main_GUI {
     }
 
     // public static void main(String[] args) throws Exception {
-    public void start() throws Exception {
+    public void start() {
         // * make JFrame visible (need to be put last)
         main_page.setVisible(true);
     }

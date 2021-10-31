@@ -66,7 +66,7 @@ public class Score_Part {
                 accuracy_border.setBorder(new MatteBorder(1, 1, 1, 1, Color.black));
                 // wait for tae input in accuracy_test
                 JLabel accuracy = new JLabel(
-                                Utils.toHTML("<p style='font-size:20px; text-align:center;'>Accuracy<br />0</p>"));
+                                Utils.toHTML("<p style='font-size:20px; text-align:center; '>Accuracy<br />0</p>"));
 
                 accuracy_border.add(accuracy);
                 main_game_page.add(accuracy_border);

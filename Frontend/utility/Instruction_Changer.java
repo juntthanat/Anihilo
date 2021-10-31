@@ -15,7 +15,7 @@ public class Instruction_Changer {
 
     // will change the instruction text once the button is click (already implement)
     public static void change_instruction() {
-        instruction = LineBreaker.breaker(instruction, 30);
+        instruction = LineBreaker.breaker(instruction, 40);
         instruction_text
                 .setText("<html><p{text-alignment: center;} style=\"font-size:18px\">" + instruction + "</p></html>");
     }
