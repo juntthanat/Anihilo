@@ -273,6 +273,7 @@ public class GUI extends Main_GUI {
         scoreChanger.set_score(s);
     }
 
+
     /**
      * Sets the accuracy without updating the scoreboard. See
      * updateScoreboard(String, String, String) for changing the accuracy + updating
@@ -296,6 +297,17 @@ public class GUI extends Main_GUI {
     }
 
     /**
+     * Sets the streak without updating the scoreboard. See
+     * updateScoreboard(String, String, String) for changing the accuracy + updating
+     * the scoreboard or updateScoreboard() for just updating the scoreboard.
+     *
+     * @param s The accuracy of the player
+     */
+     public void setStreak(String s) {
+        scoreChanger.set_streak(s);
+     }
+
+    /**
      * Updates the scoreboard
      */
     public void updateScoreboard() {
@@ -310,10 +322,11 @@ public class GUI extends Main_GUI {
      * @param accuracy The accuracy of the player.
      * @param guess    The guess of the player.
      */
-    public void updateScoreboard(String score, String accuracy, String guess) {
+    public void updateScoreboard(String score, String accuracy, String guess, String streak) {
         setScore(score);
         setAccuracy(accuracy);
         setGuess(guess);
+        setStreak(streak);
         updateScoreboard();
     }
 

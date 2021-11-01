@@ -26,6 +26,10 @@ public class Main {
                     game.clickButtonNextQuestion(); // Putting it here temp since 2021 Oct 30 since no next question button
                     gui.setLife("69");
                     gui.updateLife();
+
+                    gui.setStreak("f");
+                    gui.updateScoreboard();
+
                 }
             });
 
