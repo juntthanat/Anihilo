@@ -257,6 +257,8 @@ public class Game {
 
             gui.setDifficultyText(currentQuestion.getDifficulty()); // This doesn't need update apparently
 
+            gui.setResultText("");
+            gui.updateResultText();
 
         } else { // Access to GUI has failed
 
@@ -268,6 +270,7 @@ public class Game {
             System.out.println("Update the rightAnimeTitle to: " + currentQuestion.getRightAnime().get_name());
             System.out.println("Update GUI questionDifficultyTextBox to: " + currentQuestion.getDifficulty());
             System.out.println("Update GUI questionControlTypeTextBox to: " + currentQuestion.getType());
+            System.out.println("Update GUI resultTextBox/Label to: (Empty string)");
         }
 
     }
@@ -375,15 +378,20 @@ public class Game {
 
     }
 
+    // This function is a facade for updating the game to a new "round" so the user can answer the question
+    private void displayNewRound(){
+        this.displayQuestion();
+        this.displayStats();
+        this.displayLifeControl();
+    }
+
     // Interact-able methods or buttons
 
     public void initializeGame(){
         System.out.println("About to initialize the game");
         this.generateQuestion();
 
-        this.displayQuestion();
-        this.displayStats();
-        this.displayLifeControl();
+        this.displayNewRound();
         currentGameState = GAME_STATE_ANSWERING;
     }
 
@@ -408,9 +416,7 @@ public class Game {
             System.out.println("GUI set background color: White/Grey");
             this.generateQuestion();
 
-            this.displayQuestion();
-            this.displayStats();
-            this.displayLifeControl();
+            this.displayNewRound();
             currentGameState = GAME_STATE_ANSWERING;
         }
     }
