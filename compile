@@ -1,0 +1,3 @@
+echo "Compiling..."
+javac $(find . -name '*.java')
+echo "Finished Compiling"

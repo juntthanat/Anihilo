@@ -2,9 +2,11 @@ package Frontend.main_game;
 
 import Frontend.utility.Score_Changer;
 import Frontend.utility.Instruction_Changer;
+import Frontend.utility.Life_Changer;
 
 import java.awt.CardLayout;
 import javax.swing.JPanel;
+import javax.swing.JButton;
 
 public class Main_Game_Page {
     private Instruction instruction;
@@ -60,7 +62,15 @@ public class Main_Game_Page {
         return score_part.getScoreChanger();
     }
 
+    public Life_Changer getLifeChanger() {
+        return score_part.getLifeChanger();
+    }
+
     public Instruction_Changer getInstructionChanger() {
         return instruction.getInstructionChanger();
+    }
+
+    public JButton getResetButton() {
+        return instruction.getResetButton();
     }
 }

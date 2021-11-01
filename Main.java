@@ -24,6 +24,8 @@ public class Main {
                 public void actionPerformed(ActionEvent e) {
                     game.clickButtonLeftAnimeImg();
                     game.clickButtonNextQuestion(); // Putting it here temp since 2021 Oct 30 since no next question button
+                    gui.setLife("69");
+                    gui.updateLife();
                 }
             });
 
@@ -31,6 +33,12 @@ public class Main {
                 public void actionPerformed(ActionEvent e) {
                     game.clickButtonLeftAnimeImg();
                     game.clickButtonNextQuestion(); // Putting it here temp since 2021 Oct 30 since no next question button
+                }
+            });
+
+            gui.setResetButtonCallback(new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("Never gonna give you up");
                 }
             });
 
