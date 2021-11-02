@@ -2,11 +2,12 @@ package Frontend;
 
 import Frontend.main_game.Main_Game_Page;
 import Frontend.main_menu.Main_Menu_Page;
-import Frontend.main_game.Game_Part;
 
-import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+
+import java.awt.CardLayout;
+import java.awt.BorderLayout;
 
 public class Main_GUI {
     JFrame main_page;
@@ -24,7 +25,7 @@ public class Main_GUI {
         main_page.setSize(750, 600);
         main_page.setResizable(false);
         main_page.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        main_page.setLayout(null);
+        main_page.setLayout(new BorderLayout());
 
         // * set Title
         main_page.setTitle("Higher or Lower");
