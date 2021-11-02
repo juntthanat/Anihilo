@@ -36,8 +36,7 @@ public class Main_Menu_Page {
         menu = new JPanel();
 
         menu.setLayout(new FlowLayout(FlowLayout.CENTER, 100, 50));
-        menu.setBounds(0, 0, 750, 600);
-
+        menu.setPreferredSize(new Dimension(750, 600));
         // Put the icon in the Main_menu
         icon = new ImageIcon("Frontend/main_menu/Higher_Lower_Icon.png");
         icon_space = new JLabel(icon);

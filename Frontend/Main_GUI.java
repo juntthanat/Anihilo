@@ -8,6 +8,7 @@ import javax.swing.JPanel;
 
 import java.awt.CardLayout;
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 
 public class Main_GUI {
     JFrame main_page;
@@ -28,12 +29,12 @@ public class Main_GUI {
         main_page.setLayout(new BorderLayout());
 
         // * set Title
-        main_page.setTitle("Higher or Lower");
+        main_page.setTitle("Higher & Lower");
 
         // * Instruction
         page = new CardLayout();
         deck = new JPanel();
-        deck.setBounds(0, 0, 750, 600);
+        deck.setPreferredSize(new Dimension(750, 600));
         deck.setLayout(page);
 
         // * create and add JPanel to deck
