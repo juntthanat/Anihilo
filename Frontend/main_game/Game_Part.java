@@ -67,9 +67,9 @@ public class Game_Part {
         //// * Anime title
 
         JPanel aniPanel_L = new JPanel();
-        aniPanel_L.setBounds(100, 350, 235, 100);
+        aniPanel_L.setBounds(100, 350, 235, 70);
         JPanel aniPanel_R = new JPanel();
-        aniPanel_R.setBounds(415, 350, 235, 100);
+        aniPanel_R.setBounds(415, 350, 235, 70);
         // add a text that show whether the answer is correct or wrong
         JPanel resultPanel = new JPanel();
         resultPanel.setBounds(330, 205, 90, 30);

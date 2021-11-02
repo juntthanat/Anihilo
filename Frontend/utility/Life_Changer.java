@@ -19,7 +19,7 @@ public class Life_Changer {
      * Changes the text of the life label
      */
     public static void change_scoreBoard() {
-        life.setText(Utils.toHTML("<p style='font-size:10px; text-align:center;'>Life " + life_text + "</p>"));
+        life.setText(Utils.toHTML("<p style='font-size:10px;'>Life " + life_text + "</p>"));
     }
 
     /**

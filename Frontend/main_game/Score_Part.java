@@ -5,6 +5,9 @@ import java.awt.Color;
 import javax.swing.border.MatteBorder;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.BorderFactory;
+import java.awt.BorderLayout;
+import java.awt.Dimension;
 import Frontend.utility.Life_Changer;
 import Frontend.utility.Score_Changer;
 import Frontend.utility.Utils;
@@ -31,13 +34,16 @@ public class Score_Part {
                 main_game_page.add(streak_border);
                 // * Panel for life
                 JPanel life_border = new JPanel();
-                life_border.setBounds(0, 421, 80, 30);
+                life_border.setBounds(0, 421, 250, 30);
                 life_border.setBorder(new MatteBorder(1, 1, 1, 1, Color.black));
 
-                JLabel life = new JLabel(Utils.toHTML("<p style='font-size:10px;text-align:center;'>Life 0</p>"));
+                JLabel life = new JLabel(Utils.toHTML("<p style='font-size:10px; text-align:west;'>Life 0</p>"));
+                life.setPreferredSize(new Dimension(250, 25));
+                life.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
 
                 life_border.add(life);
                 main_game_page.add(life_border);
+
                 // * Panel for score
                 JPanel score_border = new JPanel();
                 score_border.setBounds(0, 450, 250, 150);
