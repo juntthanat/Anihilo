@@ -86,7 +86,7 @@ public class Anime extends Kitsu {
                     throw new ConnectionError("Connection Error");
                 }
 
-                System.out.println ("Error, trying again");
+                System.out.println ("Error: Exception in Anime(int,bool)");
                 if (!skip) {
                     rand_num = rand.nextInt(3000);
                 }

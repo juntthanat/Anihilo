@@ -23,12 +23,6 @@ public class Main {
             gui.setLeftAnimeButtonCallback(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     game.clickButtonLeftAnimeImg();
-                    game.clickButtonNextQuestion(); // Putting it here temp since 2021 Oct 30 since no next question button
-                    gui.setLife("69");
-                    gui.updateLife();
-
-                    gui.setStreak("f");
-                    gui.updateScoreboard();
 
                 }
             });
@@ -36,13 +30,12 @@ public class Main {
             gui.setRightAnimeButtonCallback(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     game.clickButtonLeftAnimeImg();
-                    game.clickButtonNextQuestion(); // Putting it here temp since 2021 Oct 30 since no next question button
                 }
             });
 
             gui.setResetButtonCallback(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    System.out.println("Never gonna give you up");
+                    game.clickButtonResetGame();
                 }
             });
 
