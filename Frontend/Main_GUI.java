@@ -12,9 +12,8 @@ import java.awt.Dimension;
 
 public class Main_GUI {
     JFrame main_page;
-    JPanel page1, page2;
+    JPanel page1, page2, deck;
     CardLayout page;
-    JPanel deck;
     Main_Menu_Page main_menu;
     Main_Game_Page main_game;
 
