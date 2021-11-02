@@ -1,18 +1,23 @@
 package Frontend.main_game;
 
-import java.awt.CardLayout;
 import java.awt.Color;
-import javax.swing.border.MatteBorder;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.BorderFactory;
-import java.awt.BorderLayout;
-import java.awt.Dimension;
 import Frontend.utility.Life_Changer;
 import Frontend.utility.Score_Changer;
 import Frontend.utility.Utils;
 
+import java.awt.CardLayout;
+import java.awt.BorderLayout;
+import javax.swing.BorderFactory;
+import javax.swing.border.MatteBorder;
+import java.awt.Dimension;
+
 public class Score_Part {
+        JPanel score_part_panel, streak_border, score_top_part, life_border, score_bot_part, score_border, guess_border,
+                        accuracy_border;
+        JLabel streak, life, score, guess, accuracy;
+
         Score_Changer scoreChanger;
         Life_Changer lifeChanger;
 
@@ -24,58 +29,73 @@ public class Score_Part {
          * @param page           The page to be switched to
          */
         public Score_Part(JPanel main_game_page, JPanel main_page, CardLayout page) {
-                // * Create Border
-                // * Panel for streak
-                JPanel streak_border = new JPanel();
-                streak_border.setBounds(325, 235, 100, 60);
-                JLabel streak = new JLabel(
-                                Utils.toHTML("<p style='font-size:10px; text-align:center;'>Streak <br />0</p>"));
-                streak_border.add(streak);
-                main_game_page.add(streak_border);
-                // * Panel for life
-                JPanel life_border = new JPanel();
-                life_border.setBounds(0, 421, 250, 30);
-                life_border.setBorder(new MatteBorder(1, 1, 1, 1, Color.black));
 
-                JLabel life = new JLabel(Utils.toHTML("<p style='font-size:10px; text-align:west;'>Life 0</p>"));
-                life.setPreferredSize(new Dimension(250, 25));
+                // * Create Panel for the Score_Part (Bottom Part)
+                score_part_panel = new JPanel(new BorderLayout());
+                score_part_panel.setPreferredSize(new Dimension(0, 140));
+
+                //// * Panel for Top part of Score_Part
+                score_top_part = new JPanel(new BorderLayout());
+                score_top_part.setPreferredSize(new Dimension(0, 50));
+
+                ////// * Panel for life
+                life_border = new JPanel(new BorderLayout());
+                life_border.setPreferredSize(new Dimension(250, 50));
+                life_border.setBorder(new MatteBorder(1, 1, 0, 1, Color.black));
+
+                life = new JLabel(Utils.toHTML("<p style='font-size:10px; text-align:west;'>Life 0</p>"));
+                life.setPreferredSize(new Dimension(250, 50));
                 life.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
 
-                life_border.add(life);
-                main_game_page.add(life_border);
+                life_border.add(life, BorderLayout.NORTH);
+                score_top_part.add(life_border, BorderLayout.WEST);
 
-                // * Panel for score
-                JPanel score_border = new JPanel();
-                score_border.setBounds(0, 450, 250, 150);
+                //// * Panel for bottom part of Score_Part
+                score_bot_part = new JPanel(new BorderLayout());
+                score_bot_part.setPreferredSize(new Dimension(0, 90));
+
+                ////// * Panel for score
+                score_border = new JPanel();
+                score_border.setPreferredSize(new Dimension(250, 90));
                 score_border.setBorder(new MatteBorder(1, 1, 1, 1, Color.black));
 
-                JLabel score = new JLabel(
-                                Utils.toHTML("<p style='font-size:20px; text-align:center;'>Score<br />0</p>"));
+                score = new JLabel(Utils.toHTML("<p style='font-size:20px; text-align:center;'>Score<br />0</p>"));
 
                 score_border.add(score);
-                main_game_page.add(score_border);
+                score_bot_part.add(score_border, BorderLayout.WEST);
 
-                // * Panel for Guess
-                JPanel guess_border = new JPanel();
-                guess_border.setBounds(250, 450, 250, 150);
+                ////// * Panel for Guess
+                guess_border = new JPanel();
+                guess_border.setPreferredSize(new Dimension(250, 90));
                 guess_border.setBorder(new MatteBorder(1, 0, 1, 0, Color.black));
-                // wait for tae input in guess_test
-                JLabel guess = new JLabel(
-                                Utils.toHTML("<p style='font-size:20px; text-align:center;'>Guess<br />0</p>"));
+
+                guess = new JLabel(Utils.toHTML("<p style='font-size:20px; text-align:center;'>Guess<br />0</p>"));
 
                 guess_border.add(guess);
-                main_game_page.add(guess_border);
+                score_bot_part.add(guess_border, BorderLayout.CENTER);
 
-                // * Panel for accuracy
-                JPanel accuracy_border = new JPanel();
-                accuracy_border.setBounds(500, 450, 250, 150);
+                ////// * Panel for accuracy
+                accuracy_border = new JPanel();
+                accuracy_border.setPreferredSize(new Dimension(250, 90));
                 accuracy_border.setBorder(new MatteBorder(1, 1, 1, 1, Color.black));
-                // wait for tae input in accuracy_test
-                JLabel accuracy = new JLabel(
+
+                accuracy = new JLabel(
                                 Utils.toHTML("<p style='font-size:20px; text-align:center; '>Accuracy<br />0</p>"));
 
                 accuracy_border.add(accuracy);
-                main_game_page.add(accuracy_border);
+                score_bot_part.add(accuracy_border, BorderLayout.EAST);
+
+                //// * Panel for streak
+                streak_border = new JPanel();
+                streak_border.setBounds(325, 235, 100, 60);
+                streak = new JLabel(Utils.toHTML("<p style='font-size:10px; text-align:center;'>Streak <br />0</p>"));
+                streak_border.add(streak);
+                main_game_page.add(streak_border);
+
+                score_part_panel.add(score_top_part, BorderLayout.NORTH);
+                score_part_panel.add(score_bot_part, BorderLayout.SOUTH);
+
+                main_game_page.add(score_part_panel, BorderLayout.SOUTH);
 
                 scoreChanger = new Score_Changer(score, guess, accuracy, streak);
                 lifeChanger = new Life_Changer(life);
