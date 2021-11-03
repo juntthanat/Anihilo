@@ -1,22 +1,32 @@
 package Frontend.main_game;
 
-import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+
 import Frontend.utility.Image_Changer;
 import Frontend.utility.Instruction_Changer;
 import Frontend.utility.AnimeTitle_Changer;
 import Frontend.utility.Score_Changer;
 import Frontend.utility.Popularity_Changer;
 
+import java.awt.CardLayout;
+import java.awt.BorderLayout;
+import java.awt.FlowLayout;
+import java.awt.Dimension;
+
+import java.awt.Color;
+
 import Frontend.utility.Utils;
 
 public class Game_Part {
-    JButton button_L;
-    JButton button_R;
+    JPanel center_panel, center_top_panel, center_bot_panel, aniPanel_L, aniPanel_R, resultPanel,
+            rightAnimePopularityPanel, leftAnimePopularityPanel;
+    JLabel rightAnimePopularity, leftAnimePopularity, aniL_text, aniR_text, result;
+    JButton button_L, button_R;
+
     Image_Changer img;
     AnimeTitle_Changer titleChanger;
     Popularity_Changer popularityChanger;
@@ -66,29 +76,30 @@ public class Game_Part {
 
         //// * Anime title
 
-        JPanel aniPanel_L = new JPanel();
-        aniPanel_L.setBounds(100, 350, 235, 70);
-        JPanel aniPanel_R = new JPanel();
-        aniPanel_R.setBounds(415, 350, 235, 70);
+        aniPanel_L = new JPanel();
+        aniPanel_L.setBounds(100, 357, 235, 63);
+        aniPanel_L.setBackground(Color.BLACK);
+        aniPanel_R = new JPanel();
+        aniPanel_R.setBounds(415, 357, 235, 63);
         // add a text that show whether the answer is correct or wrong
-        JPanel resultPanel = new JPanel();
+        resultPanel = new JPanel();
         resultPanel.setBounds(330, 205, 90, 30);
 
-        JPanel rightAnimePopularityPanel = new JPanel();
-        JPanel leftAnimePopularityPanel = new JPanel();
-        JLabel rightAnimePopularity = new JLabel();
-        JLabel leftAnimePopularity = new JLabel();
+        rightAnimePopularityPanel = new JPanel();
+        leftAnimePopularityPanel = new JPanel();
+        rightAnimePopularity = new JLabel();
+        leftAnimePopularity = new JLabel();
         leftAnimePopularityPanel.setBounds(10, 168, 100, 100);
         rightAnimePopularityPanel.setBounds(640, 168, 100, 100);
 
         leftAnimePopularityPanel.add(leftAnimePopularity);
         rightAnimePopularityPanel.add(rightAnimePopularity);
 
-        JLabel aniL_text = new JLabel();
+        aniL_text = new JLabel();
         aniPanel_L.add(aniL_text);
-        JLabel aniR_text = new JLabel();
+        aniR_text = new JLabel();
         aniPanel_R.add(aniR_text);
-        JLabel result = new JLabel("<html><p{text-alignment: center;} style=\"font-size:12px\"> or </p></html>");
+        result = new JLabel("<html><p{text-alignment: center;} style=\"font-size:12px\"> or </p></html>");
         resultPanel.add(result);
 
         main_game_page.add(aniPanel_L);
