@@ -38,8 +38,7 @@ public class Score_Changer {
         accuracy.setText(
                 Utils.toHTML("<p style='font-size:20px; text-align:center;'>Accuracy<br />" + accuracy_text + "</p>"));
         guess.setText(Utils.toHTML("<p style='font-size:20px; text-align:center;'>Guess<br />" + guess_text + "</p>"));
-        streak.setText(
-                Utils.toHTML("<p style='font-size:10px; text-align:center;'>Streak <br />" + streak_text + "</p>"));
+        streak.setText(Utils.toHTML("<p style='font-size:10px; text-align:center;'>Streak " + streak_text + "</p>"));
 
     }
 

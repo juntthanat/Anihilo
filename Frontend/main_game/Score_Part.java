@@ -50,6 +50,19 @@ public class Score_Part {
                 life_border.add(life, BorderLayout.NORTH);
                 score_top_part.add(life_border, BorderLayout.WEST);
 
+                //// * Panel for streak
+
+                streak_border = new JPanel(new BorderLayout());
+                streak_border.setPreferredSize(new Dimension(250, 50));
+                streak_border.setBorder(new MatteBorder(1, 1, 0, 1, Color.black));
+
+                streak = new JLabel(Utils.toHTML("<p style='font-size:10px; text-align:center;'>Streak 0</p>"));
+                streak.setPreferredSize(new Dimension(250, 50));
+                streak.setBorder(BorderFactory.createEmptyBorder(0, 5, 5, 5));
+
+                streak_border.add(streak, BorderLayout.NORTH);
+                score_top_part.add(streak_border, BorderLayout.EAST);
+
                 //// * Panel for bottom part of Score_Part
                 score_bot_part = new JPanel(new BorderLayout());
                 score_bot_part.setPreferredSize(new Dimension(0, 90));
@@ -86,11 +99,12 @@ public class Score_Part {
                 score_bot_part.add(accuracy_border, BorderLayout.EAST);
 
                 //// * Panel for streak
-                streak_border = new JPanel();
-                streak_border.setBounds(325, 235, 100, 60);
-                streak = new JLabel(Utils.toHTML("<p style='font-size:10px; text-align:center;'>Streak <br />0</p>"));
-                streak_border.add(streak);
-                main_game_page.add(streak_border);
+                // streak_border = new JPanel();
+                // streak_border.setBounds(325, 235, 100, 60);
+                // streak = new JLabel(Utils.toHTML("<p style='font-size:10px;
+                //// text-align:center;'>Streak <br />0</p>"));
+                // streak_border.add(streak);
+                // main_game_page.add(streak_border);
 
                 score_part_panel.add(score_top_part, BorderLayout.NORTH);
                 score_part_panel.add(score_bot_part, BorderLayout.SOUTH);
