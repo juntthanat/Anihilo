@@ -29,7 +29,7 @@ public class Main {
 
             gui.setRightAnimeButtonCallback(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    game.clickButtonLeftAnimeImg();
+                    game.clickButtonRightAnimeImg();
                 }
             });
 
