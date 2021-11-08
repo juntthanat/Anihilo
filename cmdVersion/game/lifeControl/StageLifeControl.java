@@ -52,7 +52,7 @@ public class StageLifeControl extends LifeControl{
     @Override
     public String toString() {
         String output = "";
-        output += "Remaining lives: " + remainingLives + "\n";
+        output += "Remaining lives: " + remainingLives + "<br/>";
         output += "Correct guess til next life: " + correctGuessTillNextLife + "\n";
         return output;
     }
