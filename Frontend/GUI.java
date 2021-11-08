@@ -17,6 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class GUI extends Main_GUI {
     private static GUI instance;
@@ -69,6 +71,26 @@ public class GUI extends Main_GUI {
      */
     public void setRightAnimeButtonCallback(ActionListener callback) {
         rightButton.addActionListener(callback);
+    }
+
+    /**
+     * Sets the mouse callback function of the left anime's
+     * button
+     *
+     * @param callback The callback function.
+     */
+    public void setLeftAnimeButtonMouseCallback(MouseAdapter callback) {
+        leftButton.addMouseListener(callback);
+    }
+
+    /**
+     * Sets the mouse callback function of the right anime's
+     * button
+     *
+     * @param callback The callback function.
+     */
+    public void setRightAnimeButtonMouseCallback(MouseAdapter callback) {
+        rightButton.addMouseListener(callback);
     }
 
     /**
