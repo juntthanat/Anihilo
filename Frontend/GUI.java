@@ -10,6 +10,7 @@ import Frontend.utility.Score_Changer;
 import Frontend.utility.Life_Changer;
 import Frontend.utility.Instruction_Changer;
 import Frontend.utility.Page_Changer;
+import Frontend.utility.DisconnectMessage;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -391,7 +392,17 @@ public class GUI extends Main_GUI {
         instructionChanger.change_diff();
     }
 
+    /**
+     * Returns the main_page of the GUI
+     */
     public JFrame getMainPage() {
         return this.main_page;
+    }
+
+    /**
+     * Shows the disconnection popup
+     */
+    public void showDisconnectPopup() {
+        DisconnectMessage.disconnected();
     }
 }
