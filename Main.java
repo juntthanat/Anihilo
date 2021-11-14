@@ -6,6 +6,8 @@ import Frontend.GUI;
 import java.util.HashMap;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class Main {
     public static void main(String[] args) {
@@ -20,16 +22,36 @@ public class Main {
 
             Game game = GameFactory.createGame(GameFactory.gameModes[0]);
             game.initializeGame();
-            gui.setLeftAnimeButtonCallback(new ActionListener() {
+/*            gui.setLeftAnimeButtonCallback(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
                     game.clickButtonLeftAnimeImg();
 
                 }
+            });*/
+
+            gui.setLeftAnimeButtonMouseCallback(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    if (e.getClickCount() > 1) {
+                        System.out.println("doubled");
+                    } else {
+                        game.clickButtonLeftAnimeImg();
+                    }
+                }
             });
 
-            gui.setRightAnimeButtonCallback(new ActionListener() {
+/*            gui.setRightAnimeButtonCallback(new ActionListener() {
                 public void actionPerformed(ActionEvent e) {
-                    game.clickButtonLeftAnimeImg();
+                    game.clickButtonRightAnimeImg();
+                }
+            });*/
+
+            gui.setRightAnimeButtonMouseCallback(new MouseAdapter() {
+                public void mouseClicked(MouseEvent e) {
+                    if (e.getClickCount() > 1) {
+                        System.out.println("doubled");
+                    } else {
+                        game.clickButtonRightAnimeImg();
+                    }
                 }
             });
 
