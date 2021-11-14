@@ -45,11 +45,6 @@ public class Main_Menu_Page {
         // Create a Button
         start_game = new JButton("Start Game");
         start_game.setPreferredSize(new Dimension(300, 30));
-        /*
-         * start_game.addActionListener(new ActionListener() { public void
-         * actionPerformed(ActionEvent e) { Page_Changer.set_page("page2");
-         * Page_Changer.Change(main_page, page); } });
-         */
         quit_game = new JButton("Quit Game");
         quit_game.setPreferredSize(new Dimension(300, 30));
         quit_game.addActionListener(new ActionListener() {

@@ -1,7 +1,5 @@
 package Frontend.main_game;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
@@ -9,7 +7,6 @@ import javax.swing.JLabel;
 import Frontend.utility.Image_Changer;
 import Frontend.utility.Instruction_Changer;
 import Frontend.utility.AnimeTitle_Changer;
-import Frontend.utility.Score_Changer;
 import Frontend.utility.Popularity_Changer;
 
 import java.awt.CardLayout;
@@ -17,10 +14,6 @@ import java.awt.BorderLayout;
 import java.awt.FlowLayout;
 import javax.swing.BorderFactory;
 import java.awt.Dimension;
-
-import java.awt.Color;
-
-import Frontend.utility.Utils;
 
 public class Game_Part {
     JPanel center_panel, center_top_panel, center_top_center_panel, center_bot_panel, center_bot_empty_panel,
@@ -54,9 +47,6 @@ public class Game_Part {
         rightAnimePopularityPanel.setPreferredSize(new Dimension(100, 100));
         rightAnimePopularity = new JLabel();
 
-        // leftAnimePopularityPanel.setBounds(10, 168, 100, 100);
-        // rightAnimePopularityPanel.setBounds(640, 168, 100, 100);
-
         leftAnimePopularityPanel.add(leftAnimePopularity);
         rightAnimePopularityPanel.add(rightAnimePopularity);
 
@@ -71,24 +61,6 @@ public class Game_Part {
         button_L.setPreferredSize(new Dimension(195, 277));
         button_R = new JButton(img.getImage_R());
         button_R.setPreferredSize(new Dimension(195, 277));
-
-        // button_L.setBounds(120, 80, 195, 277);
-        // button_R.setBounds(435, 80, 195, 277);
-
-        /*
-         * button_L.addActionListener(new ActionListener() { public void
-         * actionPerformed(ActionEvent e) { button_L.setIcon(img.getImage_L());
-         * Instruction_Changer.change_instruction();
-         * AnimeTitle_Changer.changeAnimeTitle(); Score_Changer.change_scoreBoard(); }
-         * });
-         */
-        /*
-         * button_R.addActionListener(new ActionListener() { public void
-         * actionPerformed(ActionEvent e) { button_R.setIcon(img.getImage_R());
-         * Instruction_Changer.change_instruction();
-         * AnimeTitle_Changer.changeAnimeTitle(); Score_Changer.change_scoreBoard(); }
-         * });
-         */
 
         //////// * Create a Result Panel
         resultPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
@@ -110,14 +82,11 @@ public class Game_Part {
         //// * Create a panel in the bottom part of the game_part
         center_bot_panel = new JPanel(new FlowLayout(FlowLayout.CENTER, 0, 0));
         center_bot_panel.setPreferredSize(new Dimension(0, 63));
-        // center_bot_panel.setBorder(BorderFactory.createEmptyBorder(0, 80, 0, 80));
         //// * Anime title
         aniPanel_L = new JPanel();
         aniPanel_L.setPreferredSize(new Dimension(235, 63));
-        // aniPanel_L.setBounds(100, 357, 235, 63);
         aniPanel_R = new JPanel();
         aniPanel_R.setPreferredSize(new Dimension(235, 63));
-        // aniPanel_R.setBounds(415, 357, 235, 63);
         center_bot_empty_panel = new JPanel();
         center_bot_empty_panel.setPreferredSize(new Dimension(105, 0));
 
@@ -138,7 +107,6 @@ public class Game_Part {
         titleChanger = new AnimeTitle_Changer(aniL_text, aniR_text, result);
         popularityChanger = new Popularity_Changer(leftAnimePopularity, rightAnimePopularity);
         Instruction_Changer.change_instruction();
-        // AnimeTitle_Changer.changeAnimeTitle();
     }
 
     public JButton getLeftButton() {

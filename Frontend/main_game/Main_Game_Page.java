@@ -32,7 +32,6 @@ public class Main_Game_Page {
     public JPanel main_Game(JPanel main_page, CardLayout page) {
         menu = new JPanel();
         menu.setPreferredSize(new Dimension(750, 600));
-        // menu.setBounds(0, 0, 750, 600);
         menu.setLayout(new BorderLayout());
 
         // * create panel.

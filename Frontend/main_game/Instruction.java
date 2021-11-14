@@ -16,8 +16,6 @@ import javax.swing.BorderFactory;
 import Frontend.utility.Instruction_Changer;
 
 public class Instruction {
-    // Instruction_Changer instructionChanger;
-    // JButton reset_button;
 
     JPanel instruction_panel, button_panel, instruction_text_panel, diff_panel;
     JLabel instruction_text, diff_text;

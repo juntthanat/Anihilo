@@ -98,14 +98,6 @@ public class Score_Part {
                 accuracy_border.add(accuracy);
                 score_bot_part.add(accuracy_border, BorderLayout.EAST);
 
-                //// * Panel for streak
-                // streak_border = new JPanel();
-                // streak_border.setBounds(325, 235, 100, 60);
-                // streak = new JLabel(Utils.toHTML("<p style='font-size:10px;
-                //// text-align:center;'>Streak <br />0</p>"));
-                // streak_border.add(streak);
-                // main_game_page.add(streak_border);
-
                 score_part_panel.add(score_top_part, BorderLayout.NORTH);
                 score_part_panel.add(score_bot_part, BorderLayout.SOUTH);
 
